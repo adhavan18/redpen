@@ -86,7 +86,23 @@ prompts/        every prompt as a markdown file, versioned with the code
 static/         the ui
 tests/
 samples/        exported packages from the two test lessons
+video/          the remotion project used to edit the demo video (screen recordings and footage not included)
 ```
+
+## test lessons
+
+both are in `samples/`, exported straight from the tool:
+
+| lesson | claims supported | quotes verified | code ran + matched | live http tests | simulated class (before → after) |
+|---|---|---|---|---|---|
+| http requests and responses (the sample input) | 25 / 26 | 25 / 26 | 1 / 1 | 6 / 6 | 45% → 100% |
+| sql joins (my choice) | 15 / 15 | 15 / 15 | 1 / 1 | n/a | 85% → 80% |
+
+the sql lesson is exported with an override on purpose: qc 2 flags it at 47 minutes (over the 45-minute limit) and the simulated class does not improve, so its findings stay open in the report. on the way there qc 2 also caught a wrong answer key in its quiz and qc 1 caught an activity that joined on a column the schema did not have; both were fixed through the review flow (v1 → v3).
+
+## free tier notes
+
+redpen runs on the free gemini tier. it keeps each model under its per-minute limit with a client-side limiter, waits out per-minute 429s, moves to the next model on a per-day 429, and falls back to bm25 if embeddings are unavailable. a full lesson (research, draft, both qc layers) is roughly 40-60 model calls. if every model's daily quota is used up, the failed step says so and can be retried the next day without losing anything.
 
 ## limits, honestly
 

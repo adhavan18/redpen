@@ -14,3 +14,12 @@ samples/*.zip
 video/raw/
 video/public/talk/
 video/out/
+video/public/clips/
+video/clips/
+video/sheets/
+video/shots/
+video/transcript.json
+video/src/transcript.json
+video/live-lesson.txt
+video/public/music.wav
+video/node_modules/
