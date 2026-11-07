@@ -1,0 +1,13 @@
+ddgs==9.16.1
+fastapi==0.162.0
+google-genai==3.0.0
+httpx==0.28.1
+Markdown==3.11.3
+numpy==2.5.4
+pydantic==2.14.3
+pytest==9.2.0
+python-dotenv==1.2.4
+trafilatura==2.3.1
+uvicorn==0.54.0
+youtube-transcript-api==1.2.5
+yt-dlp==2026.10.26
