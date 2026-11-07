@@ -22,6 +22,8 @@ def normalize_citations(md: str) -> str:
 def normalize_doc(doc: dict) -> dict:
     for s in doc.get("sections", []):
         s["body_md"] = normalize_citations(s["body_md"])
+    for q in doc.get("quiz", []):
+        q["explanation"] = normalize_citations(q.get("explanation", ""))
     return doc
 
 

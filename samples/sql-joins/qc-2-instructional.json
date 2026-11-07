@@ -1,0 +1,1074 @@
+{
+  "layer": "qc_instructional",
+  "summary": {
+    "total_minutes": 47,
+    "rubric_avg": 4.0,
+    "post_accuracy": 80,
+    "pre_accuracy": 85,
+    "learning_gain": -5,
+    "coverage": {
+      "full": 3
+    },
+    "confusions": 5,
+    "issues": {
+      "high": 3,
+      "low": 12,
+      "medium": 2
+    }
+  },
+  "measurements": {
+    "total_minutes": 47,
+    "pacing": [
+      {
+        "section_id": "s1",
+        "title": "The Missing Data Mystery",
+        "kind": "hook",
+        "planned": 3,
+        "reading": 0.6,
+        "words": 108
+      },
+      {
+        "section_id": "s2",
+        "title": "Combining Tables with INNER JOIN",
+        "kind": "concept",
+        "planned": 6,
+        "reading": 0.8,
+        "words": 142
+      },
+      {
+        "section_id": "s3",
+        "title": "Preserving Records with LEFT JOIN",
+        "kind": "concept",
+        "planned": 6,
+        "reading": 0.7,
+        "words": 121
+      },
+      {
+        "section_id": "s4",
+        "title": "Predicting Outcomes for Missing Matches",
+        "kind": "concept",
+        "planned": 6,
+        "reading": 0.8,
+        "words": 137
+      },
+      {
+        "section_id": "s5",
+        "title": "Working with SQL Joins",
+        "kind": "example",
+        "planned": 6,
+        "reading": 5.9,
+        "words": 169
+      },
+      {
+        "section_id": "s6",
+        "title": "Common Pitfalls and Misconceptions",
+        "kind": "misconceptions",
+        "planned": 4,
+        "reading": 0.7,
+        "words": 132
+      },
+      {
+        "section_id": "s7",
+        "title": "Query Prediction and Design Exercise",
+        "kind": "activity",
+        "planned": 8,
+        "reading": 0.7,
+        "words": 130
+      },
+      {
+        "section_id": "s8",
+        "title": "Lesson Summary",
+        "kind": "recap",
+        "planned": 2,
+        "reading": 0.4,
+        "words": 71
+      }
+    ],
+    "quiz_per_part": {
+      "Write INNER JOIN queries to combine rows from multiple tables based on a matching condition.": 1,
+      "Write LEFT JOIN queries to include all records from the left table alongside matching right table records.": 1,
+      "Predict which rows each JOIN type returns when matching rows are missing.": 3
+    },
+    "long_sentences": [
+      {
+        "section_id": "s4",
+        "words": 44,
+        "sentence": "Filtering a right-table column for a non-null value in the WHERE clause can accidentally turn your LEFT JOIN back into an INNER JOIN, silently erasing your unmatched rows because the WHERE filter evaluates after the join and excludes the newly padded NULL values [S12]."
+      }
+    ],
+    "answer_slots": {
+      "3": 1,
+      "0": 1,
+      "1": 3
+    },
+    "run_sheet": [
+      {
+        "start": 0,
+        "end": 3,
+        "what": "The Missing Data Mystery",
+        "kind": "hook"
+      },
+      {
+        "start": 3,
+        "end": 9,
+        "what": "Combining Tables with INNER JOIN",
+        "kind": "concept"
+      },
+      {
+        "start": 9,
+        "end": 15,
+        "what": "Preserving Records with LEFT JOIN",
+        "kind": "concept"
+      },
+      {
+        "start": 15,
+        "end": 16,
+        "what": "video: Learn MySQL joins in 5 minutes!",
+        "kind": "video"
+      },
+      {
+        "start": 16,
+        "end": 22,
+        "what": "Predicting Outcomes for Missing Matches",
+        "kind": "concept"
+      },
+      {
+        "start": 22,
+        "end": 28,
+        "what": "Working with SQL Joins",
+        "kind": "example"
+      },
+      {
+        "start": 28,
+        "end": 32,
+        "what": "Common Pitfalls and Misconceptions",
+        "kind": "misconceptions"
+      },
+      {
+        "start": 32,
+        "end": 40,
+        "what": "Query Prediction and Design Exercise",
+        "kind": "activity"
+      },
+      {
+        "start": 40,
+        "end": 42,
+        "what": "Lesson Summary",
+        "kind": "recap"
+      },
+      {
+        "start": 42,
+        "end": 47,
+        "what": "knowledge check",
+        "kind": "quiz"
+      }
+    ],
+    "section_kinds": {
+      "hook": 1,
+      "concept": 3,
+      "example": 1,
+      "misconceptions": 1,
+      "activity": 1,
+      "recap": 1
+    }
+  },
+  "classroom": {
+    "cohort": [
+      {
+        "name": "Asha",
+        "level": "novice",
+        "background": "first-year student, has written a little Python in school",
+        "habits": "reads every word, takes analogies literally, gets lost when two terms are introduced at once"
+      },
+      {
+        "name": "Ravi",
+        "level": "struggling",
+        "background": "second-year student who passed programming courses by memorising, weak English reading speed",
+        "habits": "skims, reads headings and bold text, mixes up similar-looking terms and numbers"
+      },
+      {
+        "name": "Meera",
+        "level": "average",
+        "background": "builds small projects from tutorials, has used libraries without knowing what happens underneath",
+        "habits": "reads explanations, skips long paragraphs, tries the examples"
+      },
+      {
+        "name": "Karthik",
+        "level": "strong",
+        "background": "has shipped real projects and is comfortable reading documentation",
+        "habits": "reads quickly, notices imprecise wording, answers from understanding not memory"
+      }
+    ],
+    "responses": {
+      "pre": {
+        "Asha": {
+          "0": {
+            "chosen": 3,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          }
+        },
+        "Ravi": {
+          "0": {
+            "chosen": 2,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 2,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          }
+        },
+        "Meera": {
+          "0": {
+            "chosen": 3,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 1,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          }
+        },
+        "Karthik": {
+          "0": {
+            "chosen": 3,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 3,
+            "confidence": 4,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          }
+        }
+      },
+      "post": {
+        "Asha": {
+          "0": {
+            "chosen": 3,
+            "confidence": 5,
+            "quote": "An inner join discards unmatched rows, but what if you need to keep every single record from your primary table regardless of whether a match exists elsewhere? For this, you use a LEFT JOIN (also called a LEFT OUTER JOIN).",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results.",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria.",
+            "grounded": true
+          },
+          "3": {
+            "chosen": 3,
+            "confidence": 4,
+            "quote": "In reality, a left join only guarantees that all rows from the left table are kept. Unmatched rows from the right table are still excluded unless you use a FULL JOIN.",
+            "grounded": true
+          },
+          "4": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "INNER JOIN: Combines rows from multiple tables based on a matching condition, returning strictly the intersecting records and dropping unmatched rows",
+            "grounded": true
+          }
+        },
+        "Ravi": {
+          "0": {
+            "chosen": 3,
+            "confidence": 4,
+            "quote": "For this, you use a LEFT JOIN (also called a LEFT OUTER JOIN).",
+            "grounded": true
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 4,
+            "quote": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results.",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 4,
+            "quote": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria.",
+            "grounded": true
+          },
+          "3": {
+            "chosen": 3,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 1,
+            "confidence": 4,
+            "quote": "An inner join discards unmatched rows, but what if you need to keep every single record from your primary table regardless of whether a match exists elsewhere?",
+            "grounded": true
+          }
+        },
+        "Meera": {
+          "0": {
+            "chosen": 3,
+            "confidence": 5,
+            "quote": "This makes left joins essential for auditing tasks, such as finding every customer including those who have never placed an order, or finding departments with zero staff.",
+            "grounded": true
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results.",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria.",
+            "grounded": true
+          },
+          "3": {
+            "chosen": 3,
+            "confidence": 4,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "An inner join discards unmatched rows, but what if you need to keep every single record from your primary table regardless of whether a match exists elsewhere?",
+            "grounded": true
+          }
+        },
+        "Karthik": {
+          "0": {
+            "chosen": 3,
+            "confidence": 5,
+            "quote": "This makes left joins essential for auditing tasks, such as finding every customer including those who have never placed an order, or finding departments with zero staff.",
+            "grounded": true
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results.",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria.",
+            "grounded": true
+          },
+          "3": {
+            "chosen": 3,
+            "confidence": 5,
+            "quote": "In reality, a left join only guarantees that all rows from the *left* table are kept. Unmatched rows from the *right* table are still excluded unless you use a `FULL JOIN`.",
+            "grounded": true
+          },
+          "4": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "INNER JOIN: Combines rows from multiple tables based on a matching condition, returning strictly the intersecting records and dropping unmatched rows.",
+            "grounded": true
+          }
+        }
+      }
+    },
+    "items": [
+      {
+        "question_index": 0,
+        "id": "q1",
+        "question": "Which SQL operation should you use when you want to retrieve every customer record from a customer table, alongside any matching orders from an orders table, ensuring customers without orders are still included?",
+        "answer_index": 3,
+        "options": [
+          "CROSS JOIN",
+          "FULL JOIN",
+          "INNER JOIN",
+          "LEFT JOIN"
+        ],
+        "p_pre": 0.75,
+        "pre_answers": {
+          "Asha": 3,
+          "Ravi": 2,
+          "Meera": 3,
+          "Karthik": 3
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 3,
+          "Ravi": 3,
+          "Meera": 3,
+          "Karthik": 3
+        },
+        "discrimination": 0.0,
+        "grounded": 3,
+        "quotes": {
+          "Asha": "An inner join discards unmatched rows, but what if you need to keep every single record from your primary table regardless of whether a match exists elsewhere? For this, you use a LEFT JOIN (also called a LEFT OUTER JOIN).",
+          "Ravi": "For this, you use a LEFT JOIN (also called a LEFT OUTER JOIN).",
+          "Meera": "This makes left joins essential for auditing tasks, such as finding every customer including those who have never placed an order, or finding departments with zero staff.",
+          "Karthik": "This makes left joins essential for auditing tasks, such as finding every customer including those who have never placed an order, or finding departments with zero staff."
+        },
+        "option_picks": [
+          0,
+          0,
+          1,
+          7
+        ],
+        "dead_distractors": [
+          0,
+          1
+        ],
+        "gain": 0.25
+      },
+      {
+        "question_index": 1,
+        "id": "q2",
+        "question": "You execute an INNER JOIN between an 'authors' table and a 'books' table on 'author_id'. One author has written no books and has no matching entry in the books table. What happens to this author in the result set?",
+        "answer_index": 0,
+        "options": [
+          "The author is excluded entirely from the result set.",
+          "The query throws a syntax error due to missing data.",
+          "The author is included with NULL values for book columns.",
+          "The author is duplicated for every book in the database."
+        ],
+        "p_pre": 1.0,
+        "pre_answers": {
+          "Asha": 0,
+          "Ravi": 0,
+          "Meera": 0,
+          "Karthik": 0
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 0,
+          "Ravi": 0,
+          "Meera": 0,
+          "Karthik": 0
+        },
+        "discrimination": 0.0,
+        "grounded": 4,
+        "quotes": {
+          "Asha": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results.",
+          "Ravi": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results.",
+          "Meera": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results.",
+          "Karthik": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results."
+        },
+        "option_picks": [
+          8,
+          0,
+          0,
+          0
+        ],
+        "dead_distractors": [
+          1,
+          2,
+          3
+        ],
+        "gain": 0.0
+      },
+      {
+        "question_index": 2,
+        "id": "q3",
+        "question": "How do you properly construct an INNER JOIN query in SQL to combine 'employees' and 'departments' tables based on 'department_id'?",
+        "answer_index": 1,
+        "options": [
+          "SELECT * FROM employees JOIN departments MATCH employees.department_id = departments.department_id;",
+          "SELECT * FROM employees INNER JOIN departments ON employees.department_id = departments.department_id;",
+          "SELECT * FROM employees, departments USING INNER JOIN department_id;",
+          "SELECT * FROM employees INNER JOIN departments WHERE employees.department_id = departments.department_id;"
+        ],
+        "p_pre": 1.0,
+        "pre_answers": {
+          "Asha": 1,
+          "Ravi": 1,
+          "Meera": 1,
+          "Karthik": 1
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 1,
+          "Ravi": 1,
+          "Meera": 1,
+          "Karthik": 1
+        },
+        "discrimination": 0.0,
+        "grounded": 4,
+        "quotes": {
+          "Asha": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria.",
+          "Ravi": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria.",
+          "Meera": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria.",
+          "Karthik": "The syntax lists the first table, declares the INNER JOIN keyword alongside the second table, and uses an ON clause to define the matching criteria."
+        },
+        "option_picks": [
+          0,
+          8,
+          0,
+          0
+        ],
+        "dead_distractors": [
+          0,
+          2,
+          3
+        ],
+        "gain": 0.0
+      },
+      {
+        "question_index": 3,
+        "id": "q4",
+        "question": "When performing a LEFT JOIN where a row in the right table has no corresponding match in the left table, what is returned for the left table's columns in that row?",
+        "answer_index": 1,
+        "options": [
+          "Default zero values",
+          "NULL values",
+          "An error code",
+          "The row is excluded from the result set"
+        ],
+        "p_pre": 0.75,
+        "pre_answers": {
+          "Asha": 1,
+          "Ravi": 1,
+          "Meera": 1,
+          "Karthik": 3
+        },
+        "p_post": 0.0,
+        "post_answers": {
+          "Asha": 3,
+          "Ravi": 3,
+          "Meera": 3,
+          "Karthik": 3
+        },
+        "discrimination": 0.0,
+        "grounded": 2,
+        "quotes": {
+          "Asha": "In reality, a left join only guarantees that all rows from the left table are kept. Unmatched rows from the right table are still excluded unless you use a FULL JOIN.",
+          "Karthik": "In reality, a left join only guarantees that all rows from the *left* table are kept. Unmatched rows from the *right* table are still excluded unless you use a `FULL JOIN`."
+        },
+        "option_picks": [
+          0,
+          3,
+          0,
+          5
+        ],
+        "dead_distractors": [
+          0,
+          2
+        ],
+        "gain": -0.75
+      },
+      {
+        "question_index": 4,
+        "id": "q5",
+        "question": "Which of the following describes the key structural difference between an INNER JOIN and a LEFT JOIN?",
+        "answer_index": 1,
+        "options": [
+          "INNER JOIN requires an ON clause, while LEFT JOIN operates without any matching condition.",
+          "INNER JOIN returns only matching intersection records, while LEFT JOIN preserves all records from the left table regardless of matches.",
+          "INNER JOIN keeps all records from both tables, while LEFT JOIN keeps only matching records.",
+          "INNER JOIN only works with numerical keys, while LEFT JOIN handles text strings."
+        ],
+        "p_pre": 0.75,
+        "pre_answers": {
+          "Asha": 1,
+          "Ravi": 2,
+          "Meera": 1,
+          "Karthik": 1
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 1,
+          "Ravi": 1,
+          "Meera": 1,
+          "Karthik": 1
+        },
+        "discrimination": 0.0,
+        "grounded": 4,
+        "quotes": {
+          "Asha": "INNER JOIN: Combines rows from multiple tables based on a matching condition, returning strictly the intersecting records and dropping unmatched rows",
+          "Ravi": "An inner join discards unmatched rows, but what if you need to keep every single record from your primary table regardless of whether a match exists elsewhere?",
+          "Meera": "An inner join discards unmatched rows, but what if you need to keep every single record from your primary table regardless of whether a match exists elsewhere?",
+          "Karthik": "INNER JOIN: Combines rows from multiple tables based on a matching condition, returning strictly the intersecting records and dropping unmatched rows."
+        },
+        "option_picks": [
+          0,
+          7,
+          1,
+          0
+        ],
+        "dead_distractors": [
+          0,
+          3
+        ],
+        "gain": 0.25
+      }
+    ],
+    "confusions": [
+      {
+        "student": "Asha",
+        "level": "novice",
+        "section_id": "s1",
+        "quote": "Relational databases store data across separate, normalized tables to reduce redundancy",
+        "why": "I have no idea what normalized tables or redundancy mean since they aren't explained anywhere."
+      },
+      {
+        "student": "Asha",
+        "level": "novice",
+        "section_id": "s2",
+        "quote": "This operation finds the strict mathematical intersection of both datasets",
+        "why": "Taking this literally, I started thinking about math class geometry instead of tables."
+      },
+      {
+        "student": "Ravi",
+        "level": "struggling",
+        "section_id": "s4",
+        "quote": "Filtering a right-table column for a non-null value in the WHERE clause can accidentally turn your LEFT JOIN back into an INNER JOIN, silently erasing your unmatched rows because the WHERE filter evaluates after the join and excludes the newly padded NULL values.",
+        "why": "This part is way too complicated with too many big words, and I got totally mixed up about whether WHERE or ON is supposed to be used."
+      },
+      {
+        "student": "Meera",
+        "level": "average",
+        "section_id": "s4",
+        "quote": "Filtering a right-table column for a non-null value in the WHERE clause can accidentally turn your LEFT JOIN back into an INNER JOIN, silently erasing your unmatched rows because the WHERE filter evaluates after the join and excludes the newly padded NULL values.",
+        "why": "This part is a bit heavy and confusing about why a WHERE clause suddenly changes the whole join type when I just wanted to filter something."
+      },
+      {
+        "student": "Karthik",
+        "level": "strong",
+        "section_id": "s4",
+        "quote": "When performing a LEFT JOIN where a row in the right table has no corresponding match in the left table, what is returned for the left table's columns in that row?",
+        "why": "This is a trick question or a conceptual confusion because a left join by definition always preserves the left table, so rows in the left table are never missing when matched against the right table; rather, it is the right table rows that are missing."
+      }
+    ],
+    "failures": []
+  },
+  "review": {
+    "alignment": [
+      {
+        "objective_part": "Write INNER JOIN queries to combine rows from multiple tables based on a matching condition.",
+        "taught_in": [
+          1
+        ],
+        "practised_in": [
+          6
+        ],
+        "assessed_by": [
+          2
+        ],
+        "coverage": "full",
+        "note": "Well covered from theory to writing practice and SQL syntax assessment."
+      },
+      {
+        "objective_part": "Write LEFT JOIN queries to include all records from the left table alongside matching right table records.",
+        "taught_in": [
+          2
+        ],
+        "practised_in": [
+          6
+        ],
+        "assessed_by": [
+          0
+        ],
+        "coverage": "full",
+        "note": "Fully addressed via explanation, schema practice, and targeted multiple choice assessment."
+      },
+      {
+        "objective_part": "Predict which rows each JOIN type returns when matching rows are missing.",
+        "taught_in": [
+          0,
+          3,
+          5
+        ],
+        "practised_in": [
+          6
+        ],
+        "assessed_by": [
+          1,
+          3,
+          4
+        ],
+        "coverage": "full",
+        "note": "Thoroughly taught and assessed across multiple quiz questions, though question 3 exhibits a flaw in comprehension outcomes."
+      }
+    ],
+    "rubric": [
+      {
+        "criterion": "objective_alignment",
+        "score": 5,
+        "justification": "The lesson strictly addresses writing inner/left joins and predicting output rows for missing data."
+      },
+      {
+        "criterion": "clarity",
+        "score": 4,
+        "justification": "Generally clear explanations, though terms like normalized tables and mathematical intersection cause minor friction for novices."
+      },
+      {
+        "criterion": "structure",
+        "score": 4,
+        "justification": "Logical flow from hook to concepts, code examples, misconceptions, and guided practice."
+      },
+      {
+        "criterion": "examples",
+        "score": 4,
+        "justification": "Python-based list comprehensions effectively simulate relational join outputs for students."
+      },
+      {
+        "criterion": "practical_application",
+        "score": 4,
+        "justification": "Section 6 provides a solid schema analysis and prediction task for hands-on application."
+      },
+      {
+        "criterion": "assessment_quality",
+        "score": 3,
+        "justification": "Question 3 performed poorly with students after reading, indicating a confusing phrasing issue regarding left vs right tables."
+      },
+      {
+        "criterion": "pacing",
+        "score": 4,
+        "justification": "Estimated at 47 minutes against a 45-minute target, which is close enough to be considered on track."
+      },
+      {
+        "criterion": "engagement",
+        "score": 4,
+        "justification": "Good use of a university enrollment mystery hook and Python simulations to keep learners engaged."
+      }
+    ],
+    "issues": [
+      {
+        "severity": "medium",
+        "category": "clarity",
+        "section_index": 1,
+        "description": "Novice learners struggle with jargon like normalized tables and mathematical intersection without prior context.",
+        "evidence": "Relational databases store data across separate, normalized tables to reduce redundancy... This operation finds the strict mathematical intersection of both datasets",
+        "suggestion": "Add a brief inline definition clarifying that normalized means split into logical categories to avoid repeating data."
+      },
+      {
+        "severity": "high",
+        "category": "assessment",
+        "section_index": -2,
+        "description": "Question 3 has a reverse confusion where students failed post-reading, likely because the question stem asks about a right table row missing a match in the left table during a LEFT JOIN, which confounds the left-join premise.",
+        "evidence": "When performing a LEFT JOIN where a row in the right table has no corresponding match in the left table, what is returned for the left table's columns in that row?",
+        "suggestion": "Reword Question 3 to focus on the standard behavior of missing right table matches from the perspective of the left table being preserved."
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "I1",
+      "layer": "instructional",
+      "severity": "high",
+      "category": "over time",
+      "section_id": null,
+      "description": "planned time is 47 minutes, over the 45-minute limit",
+      "evidence": "",
+      "suggestion": "cut or shorten the lowest-value section; do not cut the activity or the check",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I10",
+      "layer": "instructional",
+      "severity": "high",
+      "category": "students still miss it",
+      "section_id": "quiz",
+      "description": "Q4: only 0% of simulated students answer correctly after reading the lesson. Most picked option 3: \"The row is excluded from the result set\". Either the explanation does not cover it or the answer key is wrong.",
+      "evidence": "When performing a LEFT JOIN where a row in the right table has no corresponding match in the left table, what is returned for the left table's columns in that row?",
+      "suggestion": "check the answer key, then strengthen the section that teaches this",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q4"
+    },
+    {
+      "id": "I17",
+      "layer": "instructional",
+      "severity": "high",
+      "category": "assessment",
+      "section_id": "quiz",
+      "description": "Question 3 has a reverse confusion where students failed post-reading, likely because the question stem asks about a right table row missing a match in the left table during a LEFT JOIN, which confounds the left-join premise.",
+      "evidence": "When performing a LEFT JOIN where a row in the right table has no corresponding match in the left table, what is returned for the left table's columns in that row?",
+      "suggestion": "Reword Question 3 to focus on the standard behavior of missing right table matches from the perspective of the left table being preserved.",
+      "origin": "llm",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I15",
+      "layer": "instructional",
+      "severity": "medium",
+      "category": "confusing passage",
+      "section_id": "s4",
+      "description": "3 simulated student(s) got stuck here",
+      "evidence": "Ravi (struggling): \"Filtering a right-table column for a non-null value in the WHERE clause can accidentally turn your LEFT JOIN back into a\" - This part is way too complicated with too many big words, and I got totally mixed up about whether WHERE or ON is supposed to be used. / Meera (average): \"Filtering a right-table column for a non-null value in the WHERE clause can accidentally turn your LEFT JOIN back into a\" - This part is a bit heavy and confusing about why a WHERE clause suddenly changes the whole join type when I just wanted to filter something. / Karthik (strong): \"When performing a LEFT JOIN where a row in the right table has no corresponding match in the left table, what is returne\" - This is a trick question or a conceptual confusion because a left join by definition always preserves the left table, so rows in the left table are never missing when matched against the right table; rather, it is the right table rows that are missing.",
+      "suggestion": "define the term or add the missing step where they got stuck",
+      "origin": "simulated",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I16",
+      "layer": "instructional",
+      "severity": "medium",
+      "category": "clarity",
+      "section_id": "s2",
+      "description": "Novice learners struggle with jargon like normalized tables and mathematical intersection without prior context.",
+      "evidence": "Relational databases store data across separate, normalized tables to reduce redundancy... This operation finds the strict mathematical intersection of both datasets",
+      "suggestion": "Add a brief inline definition clarifying that normalized means split into logical categories to avoid repeating data.",
+      "origin": "llm",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I2",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "pacing",
+      "section_id": "s2",
+      "description": "\"Combining Tables with INNER JOIN\" is about 0.8 min of reading for a 6-minute slot",
+      "evidence": "",
+      "suggestion": "add an example or a check-your-understanding prompt",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I3",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "pacing",
+      "section_id": "s3",
+      "description": "\"Preserving Records with LEFT JOIN\" is about 0.7 min of reading for a 6-minute slot",
+      "evidence": "",
+      "suggestion": "add an example or a check-your-understanding prompt",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I4",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "pacing",
+      "section_id": "s4",
+      "description": "\"Predicting Outcomes for Missing Matches\" is about 0.8 min of reading for a 6-minute slot",
+      "evidence": "",
+      "suggestion": "add an example or a check-your-understanding prompt",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I5",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q1: nobody in the simulated classroom picked \"CROSS JOIN\", \"FULL JOIN\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q1"
+    },
+    {
+      "id": "I6",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "no learning signal",
+      "section_id": "quiz",
+      "description": "Q2: every simulated student answers correctly before reading the lesson",
+      "evidence": "You execute an INNER JOIN between an 'authors' table and a 'books' table on 'author_id'. One author has written no books and has no matching entry in the books table. What happens to this author in the result set?",
+      "suggestion": "make it an application question with a new scenario, so it measures what the lesson taught",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q2"
+    },
+    {
+      "id": "I7",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q2: nobody in the simulated classroom picked \"The query throws a syntax error due to missing data.\", \"The author is included with NULL values for book columns.\", \"The author is duplicated for every book in the database.\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q2"
+    },
+    {
+      "id": "I8",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "no learning signal",
+      "section_id": "quiz",
+      "description": "Q3: every simulated student answers correctly before reading the lesson",
+      "evidence": "How do you properly construct an INNER JOIN query in SQL to combine 'employees' and 'departments' tables based on 'department_id'?",
+      "suggestion": "make it an application question with a new scenario, so it measures what the lesson taught",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q3"
+    },
+    {
+      "id": "I9",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q3: nobody in the simulated classroom picked \"SELECT * FROM employees JOIN departments MATCH employees.department_id = departments.department_id;\", \"SELECT * FROM employees, departments USING INNER JOIN department_id;\", \"SELECT * FROM employees INNER JOIN departments WHERE employees.department_id = departments.department_id;\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q3"
+    },
+    {
+      "id": "I11",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q4: nobody in the simulated classroom picked \"Default zero values\", \"An error code\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q4"
+    },
+    {
+      "id": "I12",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q5: nobody in the simulated classroom picked \"INNER JOIN requires an ON clause, while LEFT JOIN operates without any matching condition.\", \"INNER JOIN only works with numerical keys, while LEFT JOIN handles text strings.\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q5"
+    },
+    {
+      "id": "I13",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "confusing passage",
+      "section_id": "s1",
+      "description": "1 simulated student(s) got stuck here",
+      "evidence": "Asha (novice): \"Relational databases store data across separate, normalized tables to reduce redundancy\" - I have no idea what normalized tables or redundancy mean since they aren't explained anywhere.",
+      "suggestion": "define the term or add the missing step where they got stuck",
+      "origin": "simulated",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I14",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "confusing passage",
+      "section_id": "s2",
+      "description": "1 simulated student(s) got stuck here",
+      "evidence": "Asha (novice): \"This operation finds the strict mathematical intersection of both datasets\" - Taking this literally, I started thinking about math class geometry instead of tables.",
+      "suggestion": "define the term or add the missing step where they got stuck",
+      "origin": "simulated",
+      "status": "open",
+      "note": null
+    }
+  ],
+  "errors": [],
+  "version": 3,
+  "created_at": 1794042332.761
+}

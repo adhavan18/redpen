@@ -1,0 +1,17 @@
+{
+  "lesson": "HTTP Requests and Responses",
+  "objective": "Explain GET and POST methods and distinguish between 2xx, 4xx, and 5xx response status categories.",
+  "version": 1,
+  "exported_at": "2026-11-07T15:16:50",
+  "gate": {
+    "ok": true,
+    "reasons": [],
+    "version": 1
+  },
+  "override_reason": null,
+  "qc_versions": {
+    "factual": 1,
+    "instructional": 1
+  },
+  "minutes": 44
+}

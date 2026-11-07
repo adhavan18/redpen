@@ -160,7 +160,7 @@ def build(lesson_id: str, override: str | None) -> tuple[bytes, str]:
     if not g["ok"] and not (override and len(override.strip()) >= 10):
         raise PermissionError("; ".join(g["reasons"]))
     ver = storage.load_version(lesson_id)
-    doc, research = ver["doc"], storage.load_research(lesson_id)
+    doc, research = generate.normalize_doc(ver["doc"]), storage.load_research(lesson_id)
     lesson_md = lesson_markdown(doc, research)
     srcs, books, threads = references(doc, research)
     refs_md = lesson_md[lesson_md.index("## References"):]

@@ -1,0 +1,253 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content='width=device-width'><title>HTTP Requests and Responses</title><style>body{font:17px/1.6 Georgia,serif;max-width:760px;margin:40px auto;padding:0 20px;color:#1d1b16;background:#fbfaf6}
+h1{font:700 2rem/1.2 system-ui,sans-serif}h2{font:700 1.35rem system-ui,sans-serif;margin-top:2.2em;border-top:1px solid #ddd8cc;padding-top:1em}
+h3{font:600 1.05rem system-ui,sans-serif}code,pre{font:14px ui-monospace,Consolas,monospace;background:#f0ede4}pre{padding:12px;overflow:auto;border-radius:6px}
+table{border-collapse:collapse}td,th{border:1px solid #ddd8cc;padding:6px 10px}.meta{color:#6b665a;font:14px system-ui,sans-serif}
+sup a{text-decoration:none;font:600 11px system-ui,sans-serif}</style><body><h1>HTTP Requests and Responses</h1>
+<p><strong>Learning objective:</strong> Explain GET and POST methods and distinguish between 2xx, 4xx, and 5xx response status categories.</p>
+<p><em>Time: 44 minutes. Audience: first-year computer science undergraduates</em></p>
+<h2>What Happens When You Submit a Web Form?</h2>
+<p><em>3 min</em></p>
+<p>Imagine typing your username into a web page or clicking a link to read an article. Behind the scenes, your browser relies on HTTP (Hypertext Transfer Protocol) to communicate with web servers <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S9">S9</a></sup>. But how does the server know whether you are trying to fetch a page or submit account credentials? And how does it report whether your request succeeded or failed? HTTP uses specific request methods to declare intended actions and status codes to report outcomes clearly <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S11">S11</a></sup>. Understanding these mechanisms is essential for developing web applications and designing REST APIs <sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S11">S11</a></sup>.</p>
+<h2>HTTP Request Methods: GET vs POST</h2>
+<p><em>7 min</em></p>
+<p>An HTTP request specifies a method (sometimes called an HTTP verb) to classify the desired action to be performed on a target server resource <sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S12">S12</a></sup>. Method names are strictly case-sensitive <sup><a href="#ref-S8">S8</a></sup>.</p>
+<h3>The GET Method</h3>
+<p>The GET method is primarily used to retrieve or fetch data from a server without modifying the target resource <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S9">S9</a></sup>.
+- <strong>Data Transmission</strong>: GET sends parameters appended directly to the URL as query parameters <sup><a href="#ref-S6">S6</a></sup>.
+- <strong>Safety</strong>: GET is defined as a safe method, meaning it is intended to be read-only and have no intended effect on server state <sup><a href="#ref-S8">S8</a></sup>.
+- <strong>Browser Behavior</strong>: Because data is included in the URL, GET requests can be bookmarked and stored in browser history <sup><a href="#ref-S6">S6</a></sup>. However, sending sensitive parameters (like passwords) in the address bar can compromise security <sup><a href="#ref-S6">S6</a></sup>.
+- <strong>Response Content</strong>: A successful GET response returns a representation of the target resource <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S11">S11</a></sup>.</p>
+<h3>The POST Method</h3>
+<p>The POST method is used to send data from the client to the server for creating or updating resources or processing data <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S9">S9</a></sup>.
+- <strong>Data Transmission</strong>: POST transfers data inside the request body rather than in the URL <sup><a href="#ref-S6">S6</a></sup>.
+- <strong>Safety</strong>: POST is classified as an unsafe method because it may modify server state or produce side effects (such as updating database records or sending emails) <sup><a href="#ref-S8">S8</a></sup>.
+- <strong>Use Cases</strong>: POST is suitable for submitting web forms, uploading files, or transmitting sensitive or large datasets <sup><a href="#ref-S6">S6</a></sup>.
+- <strong>Response Content</strong>: A successful POST response returns content representing the status of, or results obtained from, the action <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S11">S11</a></sup>.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>GET Method</th>
+<th>POST Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Purpose</strong></td>
+<td>Retrieve / fetch data <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S9">S9</a></sup></td>
+<td>Submit / create / update data <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S9">S9</a></sup></td>
+</tr>
+<tr>
+<td><strong>Data Location</strong></td>
+<td>Appended to URL query string <sup><a href="#ref-S6">S6</a></sup></td>
+<td>Sent inside request body <sup><a href="#ref-S6">S6</a></sup></td>
+</tr>
+<tr>
+<td><strong>Safety Class</strong></td>
+<td>Safe (read-only, no server state modification) <sup><a href="#ref-S8">S8</a></sup></td>
+<td>Unsafe (may modify server state) <sup><a href="#ref-S8">S8</a></sup></td>
+</tr>
+<tr>
+<td><strong>Bookmarks &amp; History</strong></td>
+<td>Can be bookmarked and saved in history <sup><a href="#ref-S6">S6</a></sup></td>
+<td>Cannot be bookmarked directly <sup><a href="#ref-S6">S6</a></sup></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Optional video:</strong> <a href="https://www.youtube.com/watch?v=0OrmKCB0UrQ&amp;t=439s">Hyper Text Transfer Protocol Crash Course - HTTP 1.0, 1.1, HTTP/2, HTTP/3</a> by Hussein Nasser, 7:19-8:07 (0.8 min). Explains how clients specify HTTP methods like GET and POST when issuing web requests.</p>
+</blockquote>
+<h2>HTTP Response Status Code Categories</h2>
+<p><em>7 min</em></p>
+<p>When a server processes an HTTP request, it returns a three-digit integer status code describing the result and the semantics of the response <sup><a href="#ref-S1">S1</a></sup>. All valid status codes fall in the range of 100 to 599 inclusive <sup><a href="#ref-S1">S1</a></sup>. The first digit defines the response category, while the last two digits have no categorization role <sup><a href="#ref-S1">S1</a></sup>.</p>
+<p>Clients MUST understand the general class of any status code based on its first digit <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>. If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request) <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</p>
+<h3>Status Code Categories</h3>
+<ul>
+<li><strong>1xx (Informational)</strong>: Indicates that the request was received and processing is continuing <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S8">S8</a></sup>. Example: 100 Continue <sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S11">S11</a></sup>.</li>
+<li><strong>2xx (Successful)</strong>: Confirms that the client's request was successfully received, understood, and accepted by the server <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S8">S8</a></sup>. For example, <code>200 OK</code> indicates that the request has succeeded <sup><a href="#ref-S1">S1</a></sup>.</li>
+<li><strong>3xx (Redirection)</strong>: Indicates that further action must be taken by the client to complete the request <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+<li><strong>4xx (Client Error)</strong>: Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S13">S13</a></sup>. Examples include invalid syntax or unauthorized access attempts <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S13">S13</a></sup>.</li>
+<li><strong>5xx (Server Error)</strong>: Indicates that the server failed to fulfill an apparently valid request due to an internal server issue <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S13">S13</a></sup>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Category Name</th>
+<th>Meaning / Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1xx</strong></td>
+<td>Informational</td>
+<td>Request received, continuing process <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S8">S8</a></sup></td>
+</tr>
+<tr>
+<td><strong>2xx</strong></td>
+<td>Successful</td>
+<td>Request successfully received, understood, and accepted <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup></td>
+</tr>
+<tr>
+<td><strong>3xx</strong></td>
+<td>Redirection</td>
+<td>Further action required to complete request <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S8">S8</a></sup></td>
+</tr>
+<tr>
+<td><strong>4xx</strong></td>
+<td>Client Error</td>
+<td>Request contains bad syntax or client-side error <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S13">S13</a></sup></td>
+</tr>
+<tr>
+<td><strong>5xx</strong></td>
+<td>Server Error</td>
+<td>Server failed to fulfill an apparently valid request <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Optional video:</strong> <a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0&amp;t=571s">HTTP Crash Course &amp; Exploration</a> by Traversy Media, 9:31-10:19 (0.8 min). Overview of HTTP response status code ranges including 200, 300, and 400 series.</p>
+</blockquote>
+<h2>Executing GET and POST Requests in Python</h2>
+<p><em>6 min</em></p>
+<p>Let's observe how GET and POST requests are issued programmatically and inspect their response status codes using Python's standard library <code>urllib.request</code>.</p>
+<pre><code class="language-python">import urllib.request
+import urllib.parse
+import json
+
+# 1. Executing a GET request
+url_get = &quot;https://httpbin.org/get?user=alice&amp;city=boston&quot;
+req_get = urllib.request.Request(url_get, method=&quot;GET&quot;)
+
+with urllib.request.urlopen(req_get) as response:
+    status_code = response.getcode()
+    body = json.loads(response.read().decode())
+    print(f&quot;GET Status Code: {status_code}&quot;)
+    print(f&quot;GET Query Arguments: {body['args']}&quot;)
+
+# 2. Executing a POST request
+url_post = &quot;https://httpbin.org/post&quot;
+data = urllib.parse.urlencode({&quot;username&quot;: &quot;bob&quot;, &quot;role&quot;: &quot;admin&quot;}).encode(&quot;utf-8&quot;)
+req_post = urllib.request.Request(url_post, data=data, method=&quot;POST&quot;)
+
+with urllib.request.urlopen(req_post) as response:
+    status_code = response.getcode()
+    body = json.loads(response.read().decode())
+    print(f&quot;POST Status Code: {status_code}&quot;)
+    print(f&quot;POST Form Data: {body['form']}&quot;)
+</code></pre>
+<pre><code class="language-output">GET Status Code: 200
+GET Query Arguments: {'city': 'boston', 'user': 'alice'}
+POST Status Code: 200
+POST Form Data: {'role': 'admin', 'username': 'bob'}
+</code></pre>
+<p>Notice that the GET request appends data directly to the URL (<code>?user=alice&amp;city=boston</code>) <sup><a href="#ref-S6">S6</a></sup>. In contrast, the POST request encodes the payload into bytes and sends it inside the HTTP request body <sup><a href="#ref-S6">S6</a></sup>. Both requests return a status code of 200, which belongs to the 2xx (Successful) category <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup>.</p>
+<h2>Common Misconceptions About HTTP Methods and Status Codes</h2>
+<p><em>5 min</em></p>
+<h3>Misconception 1: GET requests can never alter server state, and POST requests are inherently encrypted.</h3>
+<p><strong>Why it is tempting</strong>: HTTP standards define GET as a safe, read-only method <sup><a href="#ref-S8">S8</a></sup>. Furthermore, POST parameters are hidden from the browser address bar <sup><a href="#ref-S6">S6</a></sup>.
+<strong>What is actually true</strong>: While the HTTP specification prescribes GET as safe, server implementation in practice is not technically restricted <sup><a href="#ref-S8">S8</a></sup>. A buggy server handler could modify a database during a GET request <sup><a href="#ref-S8">S8</a></sup>. Additionally, hiding parameters in a POST body does not encrypt them; both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS <sup><a href="#ref-S9">S9</a></sup>.</p>
+<h3>Misconception 2: If a client receives an unassigned or custom status code, the application must crash.</h3>
+<p><strong>Why it is tempting</strong>: Developers often expect applications to crash if a response code is not explicitly defined in a standard enum.
+<strong>What is actually true</strong>: HTTP status codes are extensible <sup><a href="#ref-S1">S1</a></sup>. Clients are not required to understand every individual status code, but MUST understand the category indicated by the first digit <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>. For instance, an unrecognized code like <code>471</code> must be treated as equivalent to <code>400</code> (Bad Request) <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</p>
+<h3>Misconception 3: A 5xx status code means the client sent invalid request data.</h3>
+<p><strong>Why it is tempting</strong>: When an HTTP request fails, developers frequently assume their request body or URL syntax was formatted incorrectly.
+<strong>What is actually true</strong>: Bad request syntax or client-side issues yield 4xx (Client Error) codes <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S13">S13</a></sup>. A 5xx status code indicates a server-side error where the server failed to fulfill an apparently valid request <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</p>
+<h2>Hands-on Request Analysis and Status Code Classification</h2>
+<p><em>9 min</em></p>
+<p>Complete the following exercise independently or in pairs.</p>
+<h3>Step 1: Request Method Selection</h3>
+<p>For each of the following scenarios, decide whether <code>GET</code> or <code>POST</code> is appropriate and justify your choice based on data placement and method safety <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S8">S8</a></sup>:
+1. Fetching a public user profile page (<code>/users/view?id=42</code>).
+2. Submitting a new account registration form containing a user's email and password.</p>
+<h3>Step 2: Status Code Classification</h3>
+<p>Categorize each scenario outcome below into <strong>2xx (Successful)</strong>, <strong>4xx (Client Error)</strong>, or <strong>5xx (Server Error)</strong> <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup><sup><a href="#ref-S8">S8</a></sup>:
+1. A client attempts to fetch a page, but supplies an invalid authentication header.
+2. A client sends a valid POST request, but the server's internal database connection drops unexpectedly.
+3. A web crawler issues a valid GET request and receives the full HTML content of an article.
+4. A client receives an unrecognized status code <code>429</code> from an API endpoint.</p>
+<h3>Self-Check &amp; Answers</h3>
+<ul>
+<li><strong>Step 1.1</strong>: <code>GET</code>, because fetching a profile page is a read-only retrieval operation that does not modify server state <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+<li><strong>Step 1.2</strong>: <code>POST</code>, because submitting account credentials sends sensitive data that should be placed in the request body and creates/modifies user state <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+<li><strong>Step 2.1</strong>: <strong>4xx (Client Error)</strong> — the client provided invalid request headers <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S13">S13</a></sup>.</li>
+<li><strong>Step 2.2</strong>: <strong>5xx (Server Error)</strong> — an apparently valid request failed due to a server-side failure <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+<li><strong>Step 2.3</strong>: <strong>2xx (Successful)</strong> — the request was successfully received, understood, and accepted <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup>.</li>
+<li><strong>Step 2.4</strong>: <strong>4xx (Client Error)</strong> — an unrecognized 4xx code (429) must be interpreted as equivalent to 400 (Client Error) based on its first digit <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+</ul>
+<h2>Key Takeaways</h2>
+<p><em>2 min</em></p>
+<ul>
+<li><strong>GET vs. POST Methods</strong>: GET retrieves data via URL parameters and is defined as a safe, read-only method; POST submits data inside the request body to create or update resources and may modify server state <sup><a href="#ref-S6">S6</a></sup><sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S9">S9</a></sup>.</li>
+<li><strong>Status Code Structure</strong>: Status codes are three-digit integers where the first digit determines the response category <sup><a href="#ref-S1">S1</a></sup>.</li>
+<li><strong>2xx Category</strong>: Indicates that the request was successfully received, understood, and accepted (e.g., 200 OK) <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S7">S7</a></sup>.</li>
+<li><strong>4xx Category</strong>: Indicates client-side errors such as bad syntax or unauthorized requests <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S13">S13</a></sup>.</li>
+<li><strong>5xx Category</strong>: Indicates server-side errors where the server fails to fulfill an apparently valid request <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+<li><strong>Extensibility Rule</strong>: Clients must understand the status class (first digit) and map unrecognized codes to the base <code>x00</code> code of that class <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+</ul>
+<h2>Knowledge check</h2>
+<p><em>5 min</em></p>
+<p><strong>1. Which of the following correctly describes a structural distinction between HTTP GET and POST requests?</strong></p>
+<ul>
+<li>A) GET transfers data within the request body, whereas POST appends parameters to the URL.</li>
+<li>B) GET requests cannot be bookmarked by browsers, whereas POST requests are stored in browser history.</li>
+<li>C) GET sends parameters as part of the URL query string, whereas POST transfers parameters inside the request body.</li>
+<li>D) GET is an unsafe method intended to modify server state, whereas POST is strictly read-only.</li>
+</ul>
+<p><strong>2. A web application form requires users to enter a new password. Why should the web developer configure the form to use POST instead of GET?</strong></p>
+<ul>
+<li>A) POST places sensitive form data inside the request body rather than displaying it in the browser URL bar.</li>
+<li>B) GET requests are restricted from sending text strings to web servers.</li>
+<li>C) GET automatically encrypts parameters, whereas POST sends plain text without TLS.</li>
+<li>D) POST is a safe method that guarantees no state changes occur on the backend server.</li>
+</ul>
+<p><strong>3. An API client submits a valid request to an API endpoint. While processing the request, the server's internal database service crashes. Which status code category should the server return?</strong></p>
+<ul>
+<li>A) 3xx (Redirection)</li>
+<li>B) 5xx (Server Error)</li>
+<li>C) 4xx (Client Error)</li>
+<li>D) 2xx (Successful)</li>
+</ul>
+<p><strong>4. A client sends an HTTP request containing malformed JSON syntax in its request payload. How should the server categorize its response status code?</strong></p>
+<ul>
+<li>A) 5xx class because any execution failure must be classified as a server error.</li>
+<li>B) 4xx class because the request contains bad syntax or a client-side error.</li>
+<li>C) 2xx class because the network packet was successfully delivered.</li>
+<li>D) 1xx class to request informational header updates from the client.</li>
+</ul>
+<p><strong>5. A client receives an unrecognized HTTP status code of 471 from a server. According to the HTTP specification, how must the client handle this response?</strong></p>
+<ul>
+<li>A) Treat the response as equivalent to status code 400 (Bad Request).</li>
+<li>B) Crash the application because the status code is unregistered.</li>
+<li>C) Ignore the status code and assume the request succeeded with 200 OK.</li>
+<li>D) Treat the response as equivalent to status code 500 (Internal Server Error).</li>
+</ul>
+<h3>Answers</h3>
+<ol>
+<li><strong>C</strong>: GET parameters are appended directly to the URL as query parameters, whereas POST transfers parameters inside the HTTP request body <sup><a href="#ref-S6">S6</a></sup>.</li>
+<li><strong>A</strong>: GET displays parameters directly in the browser address bar, which can compromise security. POST sends data inside the request body <sup><a href="#ref-S6">S6</a></sup>.</li>
+<li><strong>B</strong>: 5xx status codes indicate that the server failed to fulfill an apparently valid request due to an internal server error <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+<li><strong>B</strong>: 4xx status codes indicate client errors, including bad syntax or requests that cannot be fulfilled <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup><sup><a href="#ref-S13">S13</a></sup>.</li>
+<li><strong>A</strong>: Clients MUST understand the class of any status code based on its first digit and treat an unrecognized status code as equivalent to the x00 status code of that class (e.g., 471 becomes 400) <sup><a href="#ref-S1">S1</a></sup><sup><a href="#ref-S8">S8</a></sup>.</li>
+</ol>
+<h2>References</h2>
+<ul>
+<li><strong><sup><a href="#ref-S1">S1</a></sup></strong> HTTP Semantics. <a href="https://www.rfc-editor.org/rfc/rfc9110.html">https://www.rfc-editor.org/rfc/rfc9110.html</a> (tier A: IETF RFC (the standard itself))</li>
+<li><strong><sup><a href="#ref-S6">S6</a></sup></strong> Difference between HTTP GET and POST Methods - GeeksforGeeks. <a href="https://www.geeksforgeeks.org/php/difference-between-http-get-and-post-methods/">https://www.geeksforgeeks.org/php/difference-between-http-get-and-post-methods/</a> (tier B: tutorial site (uneven quality))</li>
+<li><strong><sup><a href="#ref-S7">S7</a></sup></strong> HTTP Status Codes - GeeksforGeeks. <a href="https://www.geeksforgeeks.org/computer-networks/what-are-http-status-codes/">https://www.geeksforgeeks.org/computer-networks/what-are-http-status-codes/</a> (tier B: tutorial site (uneven quality))</li>
+<li><strong><sup><a href="#ref-S8">S8</a></sup></strong> HTTP - Wikipedia. <a href="https://en.wikipedia.org/wiki/HTTP">https://en.wikipedia.org/wiki/HTTP</a> (tier B: encyclopedia (secondary, check citations))</li>
+<li><strong><sup><a href="#ref-S9">S9</a></sup></strong> Hypertext Transfer Protocol - HTTP - GeeksforGeeks. <a href="https://www.geeksforgeeks.org/html/what-is-http/">https://www.geeksforgeeks.org/html/what-is-http/</a> (tier B: tutorial site (uneven quality))</li>
+<li><strong><sup><a href="#ref-S11">S11</a></sup></strong> HTTP Status Codes — Complete Reference for RFC 9110. <a href="https://www.jpkc.com/db/en/cheatsheets/networking/http-status/">https://www.jpkc.com/db/en/cheatsheets/networking/http-status/</a> (tier C: unclassified site)</li>
+<li><strong><sup><a href="#ref-S12">S12</a></sup></strong> HTTP Methods Explained: GET, POST, PUT, PATCH &amp; DELETE | DevWithTools. <a href="https://devwithtools.org/blog/http-methods-explained">https://devwithtools.org/blog/http-methods-explained</a> (tier C: unclassified site)</li>
+<li><strong><sup><a href="#ref-S13">S13</a></sup></strong> Complete reference table of all HTTP response status codes (1xx–5xx) with descriptions and MDN links — sourced from MDN Web Docs. Covers Informational, Successful, Redirection, Client Error, and Server Error classes with per-section context notes.. <a href="https://gist.github.com/rjoydip/3e30666e42b8de5b48141bc3573ed963">https://gist.github.com/rjoydip/3e30666e42b8de5b48141bc3573ed963</a> (tier C: unclassified site)</li>
+</ul>
+<p><strong>Videos</strong></p>
+<ul>
+<li>Hyper Text Transfer Protocol Crash Course - HTTP 1.0, 1.1, HTTP/2, HTTP/3 by Hussein Nasser <a href="https://www.youtube.com/watch?v=0OrmKCB0UrQ&amp;t=439s">https://www.youtube.com/watch?v=0OrmKCB0UrQ&amp;t=439s</a> (7:19-8:07)</li>
+<li>HTTP Crash Course &amp; Exploration by Traversy Media <a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0&amp;t=571s">https://www.youtube.com/watch?v=iYM2zFP3Zn0&amp;t=571s</a> (9:31-10:19)</li>
+</ul>
+<p><strong>Further reading</strong></p>
+<ul>
+<li>HTTP, David Gourley, Brian Totty, Linda Mui (1997) <a href="https://openlibrary.org/works/OL16026044W">https://openlibrary.org/works/OL16026044W</a></li>
+<li>Computer networking, James F. Kurose, Keith W. Ross (1900) <a href="https://openlibrary.org/works/OL56272W">https://openlibrary.org/works/OL56272W</a></li>
+</ul></body></html>

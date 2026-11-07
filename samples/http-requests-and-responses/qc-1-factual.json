@@ -1,0 +1,1211 @@
+{
+  "layer": "qc_factual",
+  "summary": {
+    "claims": 26,
+    "supported": 25,
+    "partial": 0,
+    "unsupported": 1,
+    "contradicted": 0,
+    "accuracy": 96,
+    "quotes_verified": 25,
+    "code_total": 1,
+    "code_pass": 1,
+    "probes_total": 6,
+    "probes_pass": 6,
+    "copied_spans": 1,
+    "cited_sources": 8,
+    "tier_a_cited": 1,
+    "issues": {
+      "medium": 2
+    }
+  },
+  "claims": [
+    {
+      "section_id": "s2",
+      "sentence": "Method names are strictly case-sensitive.",
+      "claim": "HTTP request method names are strictly case-sensitive.",
+      "cited": [
+        "S8"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c129",
+        "c1",
+        "c113",
+        "c139"
+      ],
+      "verdict": "unsupported",
+      "evidence_id": "",
+      "source_id": null,
+      "quote": "",
+      "quote_verified": false,
+      "reasoning": "None of the provided evidence mentions whether HTTP request method names are case-sensitive.",
+      "fix": "HTTP request method names are generally written in uppercase.",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "The GET method is primarily used to retrieve or fetch data from a server without modifying the target resource.",
+      "claim": "The GET method is used to retrieve data from a server without modifying the target resource.",
+      "cited": [
+        "S6",
+        "S9"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c43",
+        "c11",
+        "c54"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c43",
+      "source_id": "S6",
+      "quote": "The HTTP GET method is used to retrieve data from the server without modifying it.",
+      "quote_verified": true,
+      "reasoning": "Evidence c43 explicitly states that the GET method is used to retrieve data without modifying it.",
+      "fix": "",
+      "downgrade_note": null,
+      "probes": [
+        {
+          "claim_index": 1,
+          "method": "GET",
+          "url": "https://jsonplaceholder.typicode.com/posts/1",
+          "body_json": "",
+          "expect_status_min": 200,
+          "expect_status_max": 299,
+          "rationale": "A successful GET request to retrieve a specific post confirms that GET retrieves data without modifying the resource.",
+          "status_code": 200,
+          "reason": "OK",
+          "passed": true,
+          "ms": 537,
+          "response_excerpt": "{\n  \"userId\": 1,\n  \"id\": 1,\n  \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\n  \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\n}",
+          "error": null
+        }
+      ]
+    },
+    {
+      "section_id": "s2",
+      "sentence": "GET sends parameters appended directly to the URL as query parameters.",
+      "claim": "GET sends parameters appended directly to the URL as query parameters.",
+      "cited": [
+        "S6"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c43",
+        "c63",
+        "c128",
+        "c44"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c43",
+      "source_id": "S6",
+      "quote": "In this method, data is sent through the URL as query parameters",
+      "quote_verified": true,
+      "reasoning": "Evidence c43 states that data in the GET method is sent through the URL as query parameters.",
+      "fix": "",
+      "downgrade_note": null,
+      "probes": [
+        {
+          "claim_index": 2,
+          "method": "GET",
+          "url": "https://jsonplaceholder.typicode.com/posts?userId=1",
+          "body_json": "",
+          "expect_status_min": 200,
+          "expect_status_max": 299,
+          "rationale": "A GET request with parameters appended as query parameters successfully retrieves filtered data.",
+          "status_code": 200,
+          "reason": "OK",
+          "passed": true,
+          "ms": 805,
+          "response_excerpt": "[\n  {\n    \"userId\": 1,\n    \"id\": 1,\n    \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\n    \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architect",
+          "error": null
+        }
+      ]
+    },
+    {
+      "section_id": "s2",
+      "sentence": "GET is defined as a safe method, meaning it is intended to be read-only and have no intended effect on server state.",
+      "claim": "GET is defined as a safe method that is intended to be read-only with no effect on server state.",
+      "cited": [
+        "S8"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c132",
+        "c117",
+        "c134",
+        "c92"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c132",
+      "source_id": "S8",
+      "quote": "The methods GET, HEAD, OPTIONS, TRACE, and QUERY are defined as safe. In other words, safe methods are intended to be read-only.",
+      "quote_verified": true,
+      "reasoning": "Evidence c132 confirms that GET is defined as a safe method and is intended to be read-only with no intended effect on the server state.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "Because data is included in the URL, GET requests can be bookmarked and stored in browser history.",
+      "claim": "GET requests can be bookmarked and stored in browser history because data is included in the URL.",
+      "cited": [
+        "S6"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c47",
+        "c43",
+        "c58",
+        "c50"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c43",
+      "source_id": "S6",
+      "quote": "GET requests can be bookmarked and stored in browser history.",
+      "quote_verified": true,
+      "reasoning": "Evidence c43 supports that GET requests can be bookmarked and stored in browser history.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "However, sending sensitive parameters (like passwords) in the address bar can compromise security.",
+      "claim": "Sending sensitive parameters in the address bar via GET compromises security.",
+      "cited": [
+        "S6"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c44",
+        "c45",
+        "c63",
+        "c74"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c44",
+      "source_id": "S6",
+      "quote": "Output: Data passed in GET method is clearly visible in the address bar, which can compromise the security.",
+      "quote_verified": true,
+      "reasoning": "Evidence c44 supports the claim that sending sensitive parameters via the GET method exposes them in the address bar, which compromises security.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "A successful GET response returns a representation of the target resource.",
+      "claim": "A successful GET response returns a representation of the target resource.",
+      "cited": [
+        "S1",
+        "S11"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c11",
+        "c4",
+        "c130",
+        "c100"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c11",
+      "source_id": "S1",
+      "quote": "GET: the target resource",
+      "quote_verified": true,
+      "reasoning": "Evidence c11 and c4 indicate that a successful 200 OK GET response returns a representation of the target resource.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "The POST method is used to send data from the client to the server for creating or updating resources or processing data.",
+      "claim": "The POST method is used to send data from the client to the server to create or update resources.",
+      "cited": [
+        "S6",
+        "S9"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c118",
+        "c43",
+        "c44",
+        "c130"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c43",
+      "source_id": "S6",
+      "quote": "POST is used to send data to the server for creating or updating resources.",
+      "quote_verified": true,
+      "reasoning": "Evidence c43 directly supports that the POST method is used to send data to the server to create or update resources.",
+      "fix": "",
+      "downgrade_note": null,
+      "probes": [
+        {
+          "claim_index": 7,
+          "method": "POST",
+          "url": "https://jsonplaceholder.typicode.com/posts",
+          "body_json": "{\"title\": \"foo\", \"body\": \"bar\", \"userId\": 1}",
+          "expect_status_min": 201,
+          "expect_status_max": 201,
+          "rationale": "A POST request with a JSON body successfully creates a new resource on the server.",
+          "status_code": 201,
+          "reason": "Created",
+          "passed": true,
+          "ms": 803,
+          "response_excerpt": "{\n  \"title\": \"foo\",\n  \"body\": \"bar\",\n  \"userId\": 1,\n  \"id\": 101\n}",
+          "error": null
+        }
+      ]
+    },
+    {
+      "section_id": "s2",
+      "sentence": "POST transfers data inside the request body rather than in the URL.",
+      "claim": "POST transfers data inside the request body rather than in the URL.",
+      "cited": [
+        "S6"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c47",
+        "c43",
+        "c60",
+        "c62"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c47",
+      "source_id": "S6",
+      "quote": "Data is sent through the request body.",
+      "quote_verified": true,
+      "reasoning": "The evidence explicitly confirms that the POST method sends data through the request body rather than the URL.",
+      "fix": "",
+      "downgrade_note": null,
+      "probes": [
+        {
+          "claim_index": 8,
+          "method": "POST",
+          "url": "https://httpbin.org/post",
+          "body_json": "{\"data\": \"test_payload\"}",
+          "expect_status_min": 200,
+          "expect_status_max": 299,
+          "rationale": "Sending a POST request to httpbin reflects that data was transferred inside the request body.",
+          "status_code": 200,
+          "reason": "OK",
+          "passed": true,
+          "ms": 1326,
+          "response_excerpt": "{\n  \"args\": {},\n  \"headers\": {\n    \"Accept\": \"*/*\",\n    \"Accept-Encoding\": \"gzip, deflate\",\n    \"Content-Length\": \"23\",\n    \"Content-Type\": \"application/json\",\n    \"Host\": \"httpbin.org\",\n    \"User-Agent\": \"redpen/0.1 (https://github.com/redpen-lessons/redpen; lesson research tool) httpx/0.28\"\n  },\n ",
+          "error": null
+        }
+      ]
+    },
+    {
+      "section_id": "s2",
+      "sentence": "POST is classified as an unsafe method because it may modify server state or produce side effects (such as updating database records or sending emails).",
+      "claim": "POST is classified as an unsafe method because it may modify server state or produce side effects.",
+      "cited": [
+        "S8"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c132",
+        "c116",
+        "c131",
+        "c77"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c132",
+      "source_id": "S8",
+      "quote": "In contrast, the methods POST, PUT, DELETE, CONNECT, and PATCH are not safe. They may modify the state of the server or have other effects such as sending an email.",
+      "quote_verified": true,
+      "reasoning": "The evidence explicitly states that POST is not safe because it may modify the state of the server or cause other effects.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "All valid status codes fall in the range of 100 to 599 inclusive.",
+      "claim": "All valid HTTP status codes fall in the range of 100 to 599 inclusive.",
+      "cited": [
+        "S1"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c8",
+        "c10",
+        "c16",
+        "c98"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c8",
+      "source_id": "S1",
+      "quote": "All valid status codes are within the range of 100 to 599, inclusive.",
+      "quote_verified": true,
+      "reasoning": "The evidence directly supports that all valid status codes fall within the 100 to 599 range inclusive.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "The first digit defines the response category, while the last two digits have no categorization role.",
+      "claim": "The first digit of an HTTP status code defines the response category.",
+      "cited": [
+        "S1"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c8",
+        "c9",
+        "c136",
+        "c49"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c8",
+      "source_id": "S1",
+      "quote": "The first digit of the status code defines the class of response. The last two digits do not have any categorization role.",
+      "quote_verified": true,
+      "reasoning": "The evidence confirms that the first digit defines the response category and the last two digits have no categorization role.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request).",
+      "claim": "Unrecognized status codes must be treated as equivalent to the base status code of their class based on the first digit.",
+      "cited": [
+        "S1",
+        "S8"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c136",
+        "c9",
+        "c84"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c9",
+      "source_id": "S1",
+      "quote": "However, a client MUST understand the class of any status code, as indicated by the first digit, and treat an unrecognized status code as being equivalent to the x00 status code of that class.",
+      "quote_verified": true,
+      "reasoning": "The evidence explicitly dictates that unrecognized status codes must be treated as equivalent to the base status code of their class based on the first digit.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "Indicates that the request was received and processing is continuing.",
+      "claim": "1xx status codes indicate that the request was received and processing is continuing.",
+      "cited": [
+        "S1",
+        "S7",
+        "S8"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c49",
+        "c84",
+        "c8"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c49",
+      "source_id": "S7",
+      "quote": "These codes indicate that the server has received the request and is continuing to process it.",
+      "quote_verified": true,
+      "reasoning": "The evidence confirms that 1xx codes indicate the request was received and processing continues.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "Confirms that the client's request was successfully received, understood, and accepted by the server.",
+      "claim": "2xx status codes confirm that the client's request was successfully received, understood, and accepted.",
+      "cited": [
+        "S1",
+        "S7",
+        "S8"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c11",
+        "c85",
+        "c8",
+        "c137"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c11",
+      "source_id": "S1",
+      "quote": "The 2xx (Successful) class of status code indicates that the client's request was successfully received, understood, and accepted.",
+      "quote_verified": true,
+      "reasoning": "The evidence directly supports that 2xx codes confirm successful receipt, understanding, and acceptance of the client's request.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "Indicates that further action must be taken by the client to complete the request.",
+      "claim": "3xx status codes indicate that further action must be taken by the client to complete the request.",
+      "cited": [
+        "S1",
+        "S7",
+        "S8"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c8",
+        "c137",
+        "c49"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c8",
+      "source_id": "S1",
+      "quote": "Further action needs to be taken in order to complete the request",
+      "quote_verified": true,
+      "reasoning": "The evidence states that 3xx codes indicate further action must be taken to complete the request.",
+      "fix": "",
+      "downgrade_note": null,
+      "probes": [
+        {
+          "claim_index": 15,
+          "method": "GET",
+          "url": "https://httpbin.org/redirect/1",
+          "body_json": "",
+          "expect_status_min": 300,
+          "expect_status_max": 399,
+          "rationale": "A redirect endpoint returns a 3xx status code indicating further action must be taken by the client.",
+          "status_code": 302,
+          "reason": "Found",
+          "passed": true,
+          "ms": 1297,
+          "response_excerpt": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>You should be redirected automatically to target URL: <a href=\"/get\">/get</a>.  If not click the link.",
+          "error": null
+        }
+      ]
+    },
+    {
+      "section_id": "s3",
+      "sentence": "Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side.",
+      "claim": "4xx status codes indicate that the request cannot be fulfilled due to bad syntax or client-side issues.",
+      "cited": [
+        "S1",
+        "S8",
+        "S13"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c91",
+        "c50",
+        "c9"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c91",
+      "source_id": "S13",
+      "quote": "he 4xx class indicates that the request contains bad syntax or cannot be fulfilled due to an error on the client's side.",
+      "quote_verified": true,
+      "reasoning": "Evidence c91 states that 4xx status codes indicate bad syntax or an error/issue on the client's side preventing fulfillment.",
+      "fix": "",
+      "downgrade_note": null,
+      "probes": [
+        {
+          "claim_index": 16,
+          "method": "GET",
+          "url": "https://jsonplaceholder.typicode.com/posts/999999",
+          "body_json": "",
+          "expect_status_min": 400,
+          "expect_status_max": 499,
+          "rationale": "Requesting a non-existent resource yields a 4xx client error status code.",
+          "status_code": 404,
+          "reason": "Not Found",
+          "passed": true,
+          "ms": 729,
+          "response_excerpt": "{}",
+          "error": null
+        }
+      ]
+    },
+    {
+      "section_id": "s3",
+      "sentence": "Indicates that the server failed to fulfill an apparently valid request due to an internal server issue.",
+      "claim": "5xx status codes indicate that the server failed to fulfill an apparently valid request due to an internal server issue.",
+      "cited": [
+        "S1",
+        "S8",
+        "S13"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c137",
+        "c138",
+        "c9",
+        "c51"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c137",
+      "source_id": "S8",
+      "quote": "5XX server error\nThe server failed to fulfill an apparently valid request.",
+      "quote_verified": true,
+      "reasoning": "Evidence c137 and c51 directly support that 5xx status codes mean the server failed to fulfill an apparently valid request due to a server error.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "While the HTTP specification prescribes GET as safe, server implementation in practice is not technically restricted.",
+      "claim": "Server implementations in practice are not technically restricted from altering state during a GET request.",
+      "cited": [
+        "S8"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c132",
+        "c111",
+        "c80",
+        "c131"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c132",
+      "source_id": "S8",
+      "quote": "Despite the prescribed safety of GET requests, in practice their handling by the server is not technically limited in any way.",
+      "quote_verified": true,
+      "reasoning": "Evidence c132 notes that despite GET being prescribed as safe, server implementation in practice is not technically restricted/limited in any way.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "A buggy server handler could modify a database during a GET request.",
+      "claim": "A server handler can modify a database during a GET request if poorly implemented.",
+      "cited": [
+        "S8"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c67",
+        "c81",
+        "c133",
+        "c132"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c133",
+      "source_id": "S8",
+      "quote": "It is perfectly possible to write a web application in which (for example) a database insert or other non-idempotent action is triggered by a GET or other request.",
+      "quote_verified": true,
+      "reasoning": "Evidence c133 explicitly states that it is possible to write a web application where a database insert (or modification) is triggered by a GET request.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "Additionally, hiding parameters in a POST body does not encrypt them; both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS.",
+      "claim": "Both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS.",
+      "cited": [
+        "S9"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c60",
+        "c54",
+        "c43",
+        "c115"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c60",
+      "source_id": "S9",
+      "quote": "- Lack of security: Data is transmitted in plain text, making it vulnerable to attacks like man-in-the-middle.",
+      "quote_verified": true,
+      "reasoning": "Evidence establishes that HTTP data is transmitted in plain text and can be secured using HTTPS/TLS.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "HTTP status codes are extensible.",
+      "claim": "HTTP status codes are extensible.",
+      "cited": [
+        "S1"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c9",
+        "c32",
+        "c70",
+        "c12"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c9",
+      "source_id": "S1",
+      "quote": "HTTP status codes are extensible.",
+      "quote_verified": true,
+      "reasoning": "Evidence c9 and c32 explicitly state that HTTP status codes and HTTP as a protocol are extensible.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "Clients are not required to understand every individual status code, but MUST understand the category indicated by the first digit.",
+      "claim": "Clients must understand the category indicated by the first digit of an HTTP status code.",
+      "cited": [
+        "S1",
+        "S8"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c136",
+        "c9",
+        "c84"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c9",
+      "source_id": "S1",
+      "quote": "However, a client MUST understand the class of any status code, as indicated by the first digit",
+      "quote_verified": true,
+      "reasoning": "Evidence c9 and c136 both state that a client must understand the class of any status code as indicated by the first digit.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "For instance, an unrecognized code like `471` must be treated as equivalent to `400` (Bad Request).",
+      "claim": "An unrecognized code like 471 must be treated as equivalent to 400 Bad Request.",
+      "cited": [
+        "S1",
+        "S8"
+      ],
+      "testable": false,
+      "located": true,
+      "evidence_ids": [
+        "c9",
+        "c136",
+        "c105"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c9",
+      "source_id": "S1",
+      "quote": "For example, if a client receives an unrecognized status code of 471,\n it can see from the first digit that there was something wrong with its\n request and treat the response as if it had received a\n 400 (Bad Request) status code.",
+      "quote_verified": true,
+      "reasoning": "Evidence c9 specifically uses the example of an unrecognized code like 471 being treated as equivalent to the 400 Bad Request status code.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "Bad request syntax or client-side issues yield 4xx (Client Error) codes.",
+      "claim": "Bad request syntax or client-side issues yield 4xx Client Error codes.",
+      "cited": [
+        "S1",
+        "S8",
+        "S13"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c13",
+        "c9",
+        "c91",
+        "c50"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c91",
+      "source_id": "S13",
+      "quote": "he 4xx class indicates that the request contains bad syntax or cannot be fulfilled due to an error on the client's side.",
+      "quote_verified": true,
+      "reasoning": "The evidence explicitly states that the 4xx class indicates bad syntax or errors on the client's side.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s5",
+      "sentence": "A 5xx status code indicates a server-side error where the server failed to fulfill an apparently valid request.",
+      "claim": "A 5xx status code indicates a server-side error where the server failed to fulfill an apparently valid request.",
+      "cited": [
+        "S1",
+        "S8"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c138",
+        "c137",
+        "c9",
+        "c95"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c138",
+      "source_id": "S8",
+      "quote": "5XX server error\nThe server failed to fulfill an apparently valid request.",
+      "quote_verified": true,
+      "reasoning": "The evidence directly confirms that a 5xx status code indicates a server error where the server failed to fulfill an apparently valid request.",
+      "fix": "",
+      "downgrade_note": null
+    }
+  ],
+  "code": [
+    {
+      "section_id": "s4",
+      "language": "python",
+      "code": "import urllib.request\nimport urllib.parse\nimport json\n\n# 1. Executing a GET request\nurl_get = \"https://httpbin.org/get?user=alice&city=boston\"\nreq_get = urllib.request.Request(url_get, method=\"GET\")\n\nwith urllib.request.urlopen(req_get) as response:\n    status_code = response.getcode()\n    body = json.loads(response.read().decode())\n    print(f\"GET Status Code: {status_code}\")\n    print(f\"GET Query Arguments: {body['args']}\")\n\n# 2. Executing a POST request\nurl_post = \"https://httpbin.org/post\"\ndata = urllib.parse.urlencode({\"username\": \"bob\", \"role\": \"admin\"}).encode(\"utf-8\")\nreq_post = urllib.request.Request(url_post, data=data, method=\"POST\")\n\nwith urllib.request.urlopen(req_post) as response:\n    status_code = response.getcode()\n    body = json.loads(response.read().decode())\n    print(f\"POST Status Code: {status_code}\")\n    print(f\"POST Form Data: {body['form']}\")",
+      "expected": "GET Status Code: 200\nGET Query Arguments: {'city': 'boston', 'user': 'alice'}\nPOST Status Code: 200\nPOST Form Data: {'role': 'admin', 'username': 'bob'}",
+      "status": "pass",
+      "note": "output matches the lesson",
+      "missing": [],
+      "actual": "GET Status Code: 200\nGET Query Arguments: {'city': 'boston', 'user': 'alice'}\nPOST Status Code: 200\nPOST Form Data: {'role': 'admin', 'username': 'bob'}\n",
+      "stderr": "",
+      "ms": 2204
+    }
+  ],
+  "probes": [
+    {
+      "claim_index": 1,
+      "method": "GET",
+      "url": "https://jsonplaceholder.typicode.com/posts/1",
+      "body_json": "",
+      "expect_status_min": 200,
+      "expect_status_max": 299,
+      "rationale": "A successful GET request to retrieve a specific post confirms that GET retrieves data without modifying the resource.",
+      "status_code": 200,
+      "reason": "OK",
+      "passed": true,
+      "ms": 537,
+      "response_excerpt": "{\n  \"userId\": 1,\n  \"id\": 1,\n  \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\n  \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\n}",
+      "error": null
+    },
+    {
+      "claim_index": 2,
+      "method": "GET",
+      "url": "https://jsonplaceholder.typicode.com/posts?userId=1",
+      "body_json": "",
+      "expect_status_min": 200,
+      "expect_status_max": 299,
+      "rationale": "A GET request with parameters appended as query parameters successfully retrieves filtered data.",
+      "status_code": 200,
+      "reason": "OK",
+      "passed": true,
+      "ms": 805,
+      "response_excerpt": "[\n  {\n    \"userId\": 1,\n    \"id\": 1,\n    \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\n    \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architect",
+      "error": null
+    },
+    {
+      "claim_index": 7,
+      "method": "POST",
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "body_json": "{\"title\": \"foo\", \"body\": \"bar\", \"userId\": 1}",
+      "expect_status_min": 201,
+      "expect_status_max": 201,
+      "rationale": "A POST request with a JSON body successfully creates a new resource on the server.",
+      "status_code": 201,
+      "reason": "Created",
+      "passed": true,
+      "ms": 803,
+      "response_excerpt": "{\n  \"title\": \"foo\",\n  \"body\": \"bar\",\n  \"userId\": 1,\n  \"id\": 101\n}",
+      "error": null
+    },
+    {
+      "claim_index": 8,
+      "method": "POST",
+      "url": "https://httpbin.org/post",
+      "body_json": "{\"data\": \"test_payload\"}",
+      "expect_status_min": 200,
+      "expect_status_max": 299,
+      "rationale": "Sending a POST request to httpbin reflects that data was transferred inside the request body.",
+      "status_code": 200,
+      "reason": "OK",
+      "passed": true,
+      "ms": 1326,
+      "response_excerpt": "{\n  \"args\": {},\n  \"headers\": {\n    \"Accept\": \"*/*\",\n    \"Accept-Encoding\": \"gzip, deflate\",\n    \"Content-Length\": \"23\",\n    \"Content-Type\": \"application/json\",\n    \"Host\": \"httpbin.org\",\n    \"User-Agent\": \"redpen/0.1 (https://github.com/redpen-lessons/redpen; lesson research tool) httpx/0.28\"\n  },\n ",
+      "error": null
+    },
+    {
+      "claim_index": 15,
+      "method": "GET",
+      "url": "https://httpbin.org/redirect/1",
+      "body_json": "",
+      "expect_status_min": 300,
+      "expect_status_max": 399,
+      "rationale": "A redirect endpoint returns a 3xx status code indicating further action must be taken by the client.",
+      "status_code": 302,
+      "reason": "Found",
+      "passed": true,
+      "ms": 1297,
+      "response_excerpt": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>Redirecting...</title>\n<h1>Redirecting...</h1>\n<p>You should be redirected automatically to target URL: <a href=\"/get\">/get</a>.  If not click the link.",
+      "error": null
+    },
+    {
+      "claim_index": 16,
+      "method": "GET",
+      "url": "https://jsonplaceholder.typicode.com/posts/999999",
+      "body_json": "",
+      "expect_status_min": 400,
+      "expect_status_max": 499,
+      "rationale": "Requesting a non-existent resource yields a 4xx client error status code.",
+      "status_code": 404,
+      "reason": "Not Found",
+      "passed": true,
+      "ms": 729,
+      "response_excerpt": "{}",
+      "error": null
+    }
+  ],
+  "citations": [
+    {
+      "section_id": "s1",
+      "title": "What Happens When You Submit a Web Form?",
+      "kind": "hook",
+      "sentences": 6,
+      "cited_sentences": 3,
+      "coverage": 0.5,
+      "sources": {
+        "S6": 2,
+        "S9": 1,
+        "S7": 2,
+        "S11": 2
+      },
+      "tiers": {
+        "B": 3,
+        "C": 1
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s2",
+      "title": "HTTP Request Methods: GET vs POST",
+      "kind": "concept",
+      "sentences": 20,
+      "cited_sentences": 17,
+      "coverage": 0.85,
+      "sources": {
+        "S8": 6,
+        "S12": 1,
+        "S6": 13,
+        "S9": 4,
+        "S1": 2,
+        "S11": 2
+      },
+      "tiers": {
+        "B": 3,
+        "C": 2,
+        "A": 1
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s3",
+      "title": "HTTP Response Status Code Categories",
+      "kind": "concept",
+      "sentences": 20,
+      "cited_sentences": 18,
+      "coverage": 0.9,
+      "sources": {
+        "S1": 17,
+        "S8": 11,
+        "S7": 7,
+        "S11": 1,
+        "S13": 4
+      },
+      "tiers": {
+        "A": 1,
+        "B": 2,
+        "C": 2
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s4",
+      "title": "Executing GET and POST Requests in Python",
+      "kind": "example",
+      "sentences": 4,
+      "cited_sentences": 3,
+      "coverage": 0.75,
+      "sources": {
+        "S6": 2,
+        "S1": 1,
+        "S7": 1
+      },
+      "tiers": {
+        "B": 2,
+        "A": 1
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s5",
+      "title": "Common Misconceptions About HTTP Methods and Status Codes",
+      "kind": "misconceptions",
+      "sentences": 15,
+      "cited_sentences": 10,
+      "coverage": 0.67,
+      "sources": {
+        "S8": 7,
+        "S6": 1,
+        "S9": 1,
+        "S1": 5,
+        "S13": 1
+      },
+      "tiers": {
+        "B": 3,
+        "A": 1,
+        "C": 1
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s6",
+      "title": "Hands-on Request Analysis and Status Code Classification",
+      "kind": "activity",
+      "sentences": 18,
+      "cited_sentences": 8,
+      "coverage": 0.44,
+      "sources": {
+        "S6": 3,
+        "S8": 6,
+        "S1": 5,
+        "S7": 2,
+        "S13": 1
+      },
+      "tiers": {
+        "B": 3,
+        "A": 1,
+        "C": 1
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s7",
+      "title": "Key Takeaways",
+      "kind": "recap",
+      "sentences": 7,
+      "cited_sentences": 6,
+      "coverage": 0.86,
+      "sources": {
+        "S6": 1,
+        "S8": 4,
+        "S9": 1,
+        "S1": 5,
+        "S7": 1,
+        "S13": 1
+      },
+      "tiers": {
+        "B": 4,
+        "A": 1,
+        "C": 1
+      },
+      "unknown": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "HTTP Semantics",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "kind": "spec",
+      "tier": "A",
+      "tier_reason": "IETF RFC (the standard itself)",
+      "relevance": 0.771,
+      "cited": 35,
+      "published": "1998-04-01"
+    },
+    {
+      "id": "S2",
+      "title": "HTTP response status codes",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+      "kind": "spec",
+      "tier": "A",
+      "tier_reason": "MDN Web Docs (vendor-neutral reference)",
+      "relevance": 0.74,
+      "cited": 0,
+      "published": "2026-09-17"
+    },
+    {
+      "id": "S3",
+      "title": "HTTP: Hypertext Transfer Protocol",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+      "kind": "spec",
+      "tier": "A",
+      "tier_reason": "MDN Web Docs (vendor-neutral reference)",
+      "relevance": 0.72,
+      "cited": 0,
+      "published": "2026-10-21"
+    },
+    {
+      "id": "S4",
+      "title": "HTTP",
+      "url": "https://openlibrary.org/works/OL16026044W",
+      "kind": "book",
+      "tier": "A",
+      "tier_reason": "published book (metadata and description only)",
+      "relevance": 0.593,
+      "cited": 0,
+      "published": "1997"
+    },
+    {
+      "id": "S5",
+      "title": "Computer networking",
+      "url": "https://openlibrary.org/works/OL56272W",
+      "kind": "book",
+      "tier": "A",
+      "tier_reason": "published book (metadata and description only)",
+      "relevance": 0.0,
+      "cited": 0,
+      "published": "1900"
+    },
+    {
+      "id": "S6",
+      "title": "Difference between HTTP GET and POST Methods - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/php/difference-between-http-get-and-post-methods/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.791,
+      "cited": 22,
+      "published": "2021-10-21"
+    },
+    {
+      "id": "S7",
+      "title": "HTTP Status Codes - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/computer-networks/what-are-http-status-codes/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.788,
+      "cited": 13,
+      "published": "2022-03-26"
+    },
+    {
+      "id": "S8",
+      "title": "HTTP - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/HTTP",
+      "kind": "wiki",
+      "tier": "B",
+      "tier_reason": "encyclopedia (secondary, check citations)",
+      "relevance": 0.781,
+      "cited": 34,
+      "published": null
+    },
+    {
+      "id": "S9",
+      "title": "Hypertext Transfer Protocol - HTTP - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/html/what-is-http/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.71,
+      "cited": 7,
+      "published": "2024-04-01"
+    },
+    {
+      "id": "S10",
+      "title": "HTTP Request and Response Cycle in Express.js - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/web-tech/request-and-response-cycle-in-express-js/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.692,
+      "cited": 0,
+      "published": "2025-07-14"
+    },
+    {
+      "id": "S11",
+      "title": "HTTP Status Codes — Complete Reference for RFC 9110",
+      "url": "https://www.jpkc.com/db/en/cheatsheets/networking/http-status/",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.749,
+      "cited": 5,
+      "published": "2026-03-01"
+    },
+    {
+      "id": "S12",
+      "title": "HTTP Methods Explained: GET, POST, PUT, PATCH & DELETE | DevWithTools",
+      "url": "https://devwithtools.org/blog/http-methods-explained",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.748,
+      "cited": 1,
+      "published": "2026-06-30"
+    },
+    {
+      "id": "S13",
+      "title": "Complete reference table of all HTTP response status codes (1xx–5xx) with descriptions and MDN links — sourced from MDN Web Docs. Covers Informational, Successful, Redirection, Client Error, and Server Error classes with per-section context notes.",
+      "url": "https://gist.github.com/rjoydip/3e30666e42b8de5b48141bc3573ed963",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.743,
+      "cited": 7,
+      "published": "2026-05-08"
+    },
+    {
+      "id": "S14",
+      "title": "content/files/en-us/web/http/reference/status/index.md at main · mdn/content",
+      "url": "https://github.com/mdn/content/blob/main/files/en-us/web/http/reference/status/index.md?plain=1",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.729,
+      "cited": 0,
+      "published": "2020-09-15"
+    }
+  ],
+  "copied": [
+    {
+      "section_id": "s2",
+      "span": "post method is used to send data from the client to the server for creating or updating resources",
+      "words": 18
+    }
+  ],
+  "issues": [
+    {
+      "id": "F1",
+      "layer": "factual",
+      "severity": "medium",
+      "category": "copied text",
+      "section_id": "s2",
+      "description": "1 passage(s) of 12+ words match a source word for word",
+      "evidence": "\"post method is used to send data from the client to the server for creating or updating resources\"",
+      "suggestion": "paraphrase these passages and keep the citation",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "F2",
+      "layer": "factual",
+      "severity": "medium",
+      "category": "unsupported claim",
+      "section_id": "s2",
+      "description": "\"HTTP request method names are strictly case-sensitive.\" is not backed by any research source.",
+      "evidence": "None of the provided evidence mentions whether HTTP request method names are case-sensitive.",
+      "suggestion": "HTTP request method names are generally written in uppercase.",
+      "origin": "llm",
+      "status": "open",
+      "note": null,
+      "sentence": "Method names are strictly case-sensitive."
+    }
+  ],
+  "errors": [
+    "google-grounded check skipped: google-grounded check failed after retries: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more informatio"
+  ],
+  "version": 1,
+  "created_at": 1794043705.278
+}
