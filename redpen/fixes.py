@@ -4,6 +4,7 @@ import copy
 from concurrent.futures import ThreadPoolExecutor
 
 from . import llm, prompts, storage
+from .generate import normalize_doc
 from .research import retrieval
 from .schemas import QuizRewrite, SectionRewrite
 
@@ -107,7 +108,7 @@ def accept(lesson_id: str, base_version: int, proposals: list[dict]) -> int:
         applied += p["issue_ids"]
     if not applied:
         raise ValueError("nothing to apply")
-    n = storage.save_version(lesson_id, doc, author="instructor", note="applied qc fixes " + ", ".join(applied),
+    n = storage.save_version(lesson_id, normalize_doc(doc), author="instructor", note="applied qc fixes " + ", ".join(applied),
                              base_version=base_version)
     set_status(lesson_id, applied, "applied", f"applied in v{n}")
     return n

@@ -17,6 +17,15 @@ async def lifespan(_app):
 app = FastAPI(title="redpen", lifespan=lifespan)
 
 
+@app.middleware("http")
+async def no_stale_ui(request, call_next):
+    """the ui is three small files; never let a browser keep an old copy after an update."""
+    response = await call_next(request)
+    if request.url.path == "/" or request.url.path.startswith("/static/"):
+        response.headers["Cache-Control"] = "no-cache"
+    return response
+
+
 def _404(fn):
     try:
         return fn()
@@ -150,7 +159,7 @@ def save(lesson_id: str, body: SaveLesson):
         if not (0 <= int(q.get("answer_index", -1)) < len(q.get("options", []))):
             raise HTTPException(400, f"question \"{q.get('question', '')[:50]}\" has no valid answer selected")
     try:
-        n = storage.save_version(lesson_id, doc, author="instructor", note=body.note[:200],
+        n = storage.save_version(lesson_id, generate.normalize_doc(doc), author="instructor", note=body.note[:200],
                                  base_version=body.base_version)
     except storage.ConflictError as e:
         raise HTTPException(409, str(e))

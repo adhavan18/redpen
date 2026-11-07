@@ -11,6 +11,18 @@ from .research.youtube import embed_url, fmt_ts
 from .schemas import LessonDraft
 
 CITE = re.compile(r"\[(S\d+)\]")
+CITE_GROUP = re.compile(r"\[\s*((?:[SM]\d+)(?:\s*[,;]\s*[SM]\d+)+)\s*\]")
+
+
+def normalize_citations(md: str) -> str:
+    """models write [S6, S9] as often as [S6][S9]; store one form so every check sees every citation."""
+    return CITE_GROUP.sub(lambda m: "".join(f"[{i}]" for i in re.findall(r"[SM]\d+", m.group(1))), md)
+
+
+def normalize_doc(doc: dict) -> dict:
+    for s in doc.get("sections", []):
+        s["body_md"] = normalize_citations(s["body_md"])
+    return doc
 
 
 def evidence_pack(research: dict, vectors: np.ndarray | None, parts: list[str], objective: str,
@@ -78,7 +90,7 @@ def shuffle_options(q: dict, rng: random.Random) -> dict:
 def to_document(draft: LessonDraft, title: str, objective: str, audience: str, research: dict, log) -> dict:
     sections = []
     for i, s in enumerate(draft.sections):
-        body = s.body_md.strip()
+        body = normalize_citations(s.body_md.strip())
         if not body:
             continue
         sections.append({"id": f"s{len(sections) + 1}", "kind": s.kind, "title": s.title.strip(),

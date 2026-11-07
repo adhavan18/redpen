@@ -62,8 +62,8 @@ def _call(fn, what: str, fast: bool = False):
                 if e.code == 404:
                     break  # model not available on this key, try the next one
                 if e.code == 429:
-                    if attempt >= 1:
-                        break  # quota for this model is gone, move on
+                    if attempt >= 1 or "PerDay" in str(e):
+                        break  # quota for this model is gone (a daily limit never recovers by waiting)
                     time.sleep(min(_retry_delay(e) or 8, 40))
                     continue
                 raise LLMError(f"{what}: {e.message or e}") from e
