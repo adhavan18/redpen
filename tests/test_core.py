@@ -176,3 +176,9 @@ def test_knowledge_state_differs_by_level():
     states = {lv: instructional.knowledge_state(lv, ["GET", "POST", "4xx"]) for lv in
               ("novice", "struggling", "average", "strong")}
     assert "never studied" in states["novice"] and len(set(states.values())) == 4
+
+
+def test_quote_check_ignores_table_pipes_but_not_words():
+    src = "| 1xx Informational | Indicates that the request was received and is being processed |"
+    assert contains(src, "1xx Informational Indicates that the request was received")
+    assert not contains(src, "1xx Informational indicates the request failed")

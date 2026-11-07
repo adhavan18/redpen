@@ -40,14 +40,14 @@ def sentences(md: str) -> list[str]:
 
 
 def norm(s: str) -> str:
-    s = re.sub(r"[*_`]", "", s)
-    s = s.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
-    return re.sub(r"\s+", " ", s).strip().lower()
+    """letters and digits only, lowercased. a quote counts as verbatim if its words appear in the
+    source in the same order; table pipes, markdown and curly quotes in between do not matter."""
+    return re.sub(r"[^a-z0-9]+", "", s.lower())
 
 
 def contains(haystack: str, needle: str) -> bool:
-    n = norm(needle).strip(" .\"'")
-    return bool(n) and n in norm(haystack)
+    n = norm(needle)
+    return len(n) >= 12 and n in norm(haystack)
 
 
 def section_ref(doc: dict, index: int) -> str | None:
