@@ -1,0 +1,755 @@
+{
+  "layer": "qc_factual",
+  "summary": {
+    "claims": 15,
+    "supported": 15,
+    "partial": 0,
+    "unsupported": 0,
+    "contradicted": 0,
+    "accuracy": 100,
+    "quotes_verified": 15,
+    "code_total": 1,
+    "code_pass": 1,
+    "probes_total": 0,
+    "probes_pass": 0,
+    "copied_spans": 0,
+    "cited_sources": 9,
+    "tier_a_cited": 0,
+    "issues": {
+      "high": 1,
+      "medium": 2
+    }
+  },
+  "claims": [
+    {
+      "section_id": "s2",
+      "sentence": "To combine rows from two or more tables based on a shared column, you use an INNER JOIN [S4].",
+      "claim": "An INNER JOIN combines rows from two or more tables based on a shared column.",
+      "cited": [
+        "S4"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c15",
+        "c29",
+        "c51",
+        "c31"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c15",
+      "source_id": "S6",
+      "quote": "A PostgreSQL JOIN combines rows from two or more tables based on a related column.",
+      "quote_verified": true,
+      "reasoning": "Evidence c15 explicitly states that a join combines rows from two or more tables based on a shared or related column.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "This operation finds the strict mathematical intersection of both datasets [S13].",
+      "claim": "An INNER JOIN operation finds the strict mathematical intersection of both datasets.",
+      "cited": [
+        "S13"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c51",
+        "c55",
+        "c108",
+        "c49"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c55",
+      "source_id": "S13",
+      "quote": "Strict intersection of both datasets.",
+      "quote_verified": true,
+      "reasoning": "Evidence c55 explicitly describes the INNER JOIN result as a 'Strict intersection of both datasets.'",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "It looks at a common key—such as a student ID or department ID—and returns only the rows where matching values exist in both tables [S5][S9][S15].",
+      "claim": "An INNER JOIN returns only the rows where matching values exist in both tables based on a common key.",
+      "cited": [
+        "S5",
+        "S9",
+        "S15"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c29",
+        "c21",
+        "c15",
+        "c50"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c21",
+      "source_id": "S5",
+      "quote": "INNER JOIN is used to retrieve rows where matching values exist in both tables.",
+      "quote_verified": true,
+      "reasoning": "Evidence c21 shows that an INNER JOIN returns rows where matching values exist in both tables.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results [S4][S10].",
+      "claim": "Records with no corresponding match in the other table are excluded from INNER JOIN results.",
+      "cited": [
+        "S4",
+        "S10"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c52",
+        "c96",
+        "c97",
+        "c24"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c96",
+      "source_id": "S10",
+      "quote": "If no match exists, the row is excluded from the result set.",
+      "quote_verified": true,
+      "reasoning": "Evidence c96 explicitly confirms that non-matching records are excluded from the result set.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "In SQL, you specify this in your `FROM` clause [Yh4CrPHVBdE].",
+      "claim": "SQL specifies table joins in the FROM clause.",
+      "cited": [
+        "Yh4CrPHVBdE"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c50",
+        "c38",
+        "c12"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c12",
+      "source_id": "S1",
+      "quote": "The join condition of an inner join can be written either in the WHERE clause or in the JOIN clause.",
+      "quote_verified": true,
+      "reasoning": "Evidence c12 and other examples demonstrate specifying tables and joins within the FROM clause.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s2",
+      "sentence": "The syntax lists the first table, declares the `INNER JOIN` keyword alongside the second table, and uses an `ON` clause to define the matching criteria [S4][S9].",
+      "claim": "SQL join syntax lists the first table, declares INNER JOIN with the second table, and uses an ON clause for matching criteria.",
+      "cited": [
+        "S4",
+        "S9"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c51",
+        "c81",
+        "c50",
+        "c49"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c81",
+      "source_id": "S12",
+      "quote": "The first joined table is referenced in the FROM clause, then the LEFT JOIN is added, followed by the second table you want to join. The tables are joined on matching column values; you reference these columns in the ON clause",
+      "quote_verified": true,
+      "reasoning": "Evidence c81 and c50 outline the syntax order: referencing the first table, adding the join with the second table, and using an ON clause.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "A left join returns all rows from the left table, paired with any matching rows from the right table [S3][S5].",
+      "claim": "A LEFT JOIN returns all rows from the left table paired with matching rows from the right table.",
+      "cited": [
+        "S3",
+        "S5"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c17",
+        "c64",
+        "c79",
+        "c38"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c17",
+      "source_id": "S6",
+      "quote": "LEFT JOIN returns all rows from the left table and matching rows from the right table.",
+      "quote_verified": true,
+      "reasoning": "Evidence c17 clearly states that a LEFT JOIN returns all rows from the left table alongside matching rows from the right table.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s3",
+      "sentence": "When a row in the left table lacks a match in the right table, the query still retains that left-table row, filling in the missing right-table columns with `NULL` values [S3][S5][S11].",
+      "claim": "When a left table row lacks a match in a LEFT JOIN, missing right-table columns are filled with NULL values.",
+      "cited": [
+        "S3",
+        "S5",
+        "S11"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c65",
+        "c114",
+        "c64",
+        "c99"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c64",
+      "source_id": "S11",
+      "quote": "When a left-table row has no match on the right, the query still keeps it — and fills every right-table column with NULL instead of dropping the row.",
+      "quote_verified": true,
+      "reasoning": "Evidence c64 states that unmatched left rows are kept and missing right-table columns are filled with NULL.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s4",
+      "sentence": "An `INNER JOIN` acts as a gatekeeper: if a foreign key is broken or missing on either side, the entire row is dropped [S4][S13].",
+      "claim": "An INNER JOIN drops the entire row if a foreign key is broken or missing on either side.",
+      "cited": [
+        "S4",
+        "S13"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c111",
+        "c60",
+        "c55",
+        "c66"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c111",
+      "source_id": "S8",
+      "quote": "a NULL value in any one of the foreign keys can result in the entire row being eliminated from the result set, with no indication of error.",
+      "quote_verified": true,
+      "reasoning": "Evidence c111 explicitly states that a null or broken foreign key in an inner join causes the entire row to be eliminated.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s4",
+      "sentence": "Filtering a right-table column for a non-null value in the `WHERE` clause can accidentally turn your `LEFT JOIN` back into an `INNER JOIN`, silently erasing your unmatched rows because the `WHERE` filter evaluates after the join and excludes the newly padded `NULL` values [S12].",
+      "claim": "Filtering a right-table column for a non-null value in the WHERE clause turns a LEFT JOIN into an INNER JOIN by excluding padded NULL values.",
+      "cited": [
+        "S12"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c72",
+        "c110",
+        "c104",
+        "c88"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c72",
+      "source_id": "S11",
+      "quote": "Placing a condition on a right-table column in WHERE looks harmless, but NULL fails almost every comparison, so it quietly strips out the unmatched rows you were trying to keep",
+      "quote_verified": true,
+      "reasoning": "Evidence confirms that filtering a right-table column in the WHERE clause excludes padded NULL values, turning the LEFT JOIN into an INNER JOIN.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s6",
+      "sentence": "In reality, a left join only guarantees that all rows from the *left* table are kept.",
+      "claim": "A LEFT JOIN only guarantees that all rows from the left table are kept.",
+      "cited": [],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c65",
+        "c38",
+        "c11"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c65",
+      "source_id": "S11",
+      "quote": "A LEFT JOIN changes that rule: it guarantees every row from the left table appears in the result at least once.",
+      "quote_verified": true,
+      "reasoning": "Evidence explicitly states that a LEFT JOIN guarantees every row from the left table is kept.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s6",
+      "sentence": "Unmatched rows from the *right* table are still excluded unless you use a `FULL JOIN` [S5][S12].",
+      "claim": "Unmatched rows from the right table are excluded in a LEFT JOIN unless a FULL JOIN is used.",
+      "cited": [
+        "S5",
+        "S12"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c56",
+        "c66",
+        "c79",
+        "c25"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c79",
+      "source_id": "S12",
+      "quote": "- RIGHT JOIN – Returns all the data from the right table and only the matching rows from the left table. The non-matching rows’ values will be NULL.\n- FULL JOIN – Returns all rows from both joined tables.",
+      "quote_verified": true,
+      "reasoning": "Evidence confirms unmatched rows from the right table are excluded in a LEFT JOIN and that FULL JOIN is needed to include all rows from both tables.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s6",
+      "sentence": "Because the `WHERE` clause executes after the join is built, filtering on a right-table column can inadvertently remove your `NULL` rows, transforming your outer join into an inner join [S11].",
+      "claim": "The WHERE clause executes after the join is built.",
+      "cited": [
+        "S11"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c71",
+        "c61",
+        "c41",
+        "c75"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c71",
+      "source_id": "S11",
+      "quote": "- WHERE — filters are applied to the joined result, including those NULL-padded rows.",
+      "quote_verified": true,
+      "reasoning": "Evidence states that the WHERE clause executes after the join is built.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s8",
+      "sentence": "INNER JOIN: Combines rows from multiple tables based on a matching condition, returning strictly the intersecting records and dropping unmatched rows [S4][S9][S13].",
+      "claim": "An INNER JOIN returns strictly intersecting records and drops unmatched rows.",
+      "cited": [
+        "S4",
+        "S9",
+        "S13"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c79",
+        "c56",
+        "c77",
+        "c61"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c56",
+      "source_id": "S13",
+      "quote": "| INNER JOIN | Strict intersection of both datasets. | Completely Excluded. | Completely Excluded. |",
+      "quote_verified": true,
+      "reasoning": "Evidence confirms that an INNER JOIN returns the strict intersection and completely excludes unmatched rows.",
+      "fix": "",
+      "downgrade_note": null
+    },
+    {
+      "section_id": "s8",
+      "sentence": "LEFT JOIN: Retains every record from the left table, attaching matching right-table data and placing `NULL` where matches are absent [S3][S5][S11].",
+      "claim": "A LEFT JOIN retains every record from the left table and places NULL where matches are absent.",
+      "cited": [
+        "S3",
+        "S5",
+        "S11"
+      ],
+      "testable": true,
+      "located": true,
+      "evidence_ids": [
+        "c52",
+        "c65",
+        "c64",
+        "c17"
+      ],
+      "verdict": "supported",
+      "evidence_id": "c64",
+      "source_id": "S11",
+      "quote": "A LEFT JOIN (also written LEFT OUTER JOIN) returns every row from the \"left\" table in your query, plus the matching row(s) from the \"right\" table. When a left-table row has no match on the right, the query still keeps it — and fills every right-table column with NULL",
+      "quote_verified": true,
+      "reasoning": "Evidence confirms that a LEFT JOIN retains every record from the left table and places NULL where matches are absent.",
+      "fix": "",
+      "downgrade_note": null
+    }
+  ],
+  "code": [
+    {
+      "section_id": "s5",
+      "language": "python",
+      "code": "# Simulating relational joins in Python standard library\nstudents = [\n    {\"id\": 1, \"name\": \"Alice\"},\n    {\"id\": 2, \"name\": \"Bob\"},\n    {\"id\": 3, \"name\": \"Charlie\"}\n]\n\nenrollments = [\n    {\"id\": 1, \"course\": \"CS101\"},\n    {\"id\": 2, \"course\": \"CS102\"}\n]\n\n# INNER JOIN simulation\ninner_result = [\n    (s[\"name\"], e[\"course\"])\n    for s in students\n    for e in enrollments\n    if s[\"id\"] == e[\"id\"]\n]\nprint(\"INNER:\", inner_result)\n\n# LEFT JOIN simulation\nleft_result = []\nfor s in students:\n    match = [e[\"course\"] for e in enrollments if e[\"id\"] == s[\"id\"]]\n    if match:\n        for c in match:\n            left_result.append((s[\"name\"], c))\n    else:\n        left_result.append((s[\"name\"], None))\nprint(\"LEFT:\", left_result)",
+      "expected": "INNER: [('Alice', 'CS101'), ('Bob', 'CS102')]\nLEFT: [('Alice', 'CS101'), ('Bob', 'CS102'), ('Charlie', None)]",
+      "status": "pass",
+      "note": "output matches the lesson",
+      "missing": [],
+      "actual": "INNER: [('Alice', 'CS101'), ('Bob', 'CS102')]\nLEFT: [('Alice', 'CS101'), ('Bob', 'CS102'), ('Charlie', None)]\n",
+      "stderr": "",
+      "ms": 111
+    }
+  ],
+  "probes": [],
+  "citations": [
+    {
+      "section_id": "s1",
+      "title": "The Missing Data Mystery",
+      "kind": "hook",
+      "sentences": 6,
+      "cited_sentences": 0,
+      "coverage": 0.0,
+      "sources": {},
+      "tiers": {},
+      "unknown": []
+    },
+    {
+      "section_id": "s2",
+      "title": "Combining Tables with INNER JOIN",
+      "kind": "concept",
+      "sentences": 7,
+      "cited_sentences": 6,
+      "coverage": 0.86,
+      "sources": {
+        "S4": 3,
+        "S13": 2,
+        "S5": 1,
+        "S9": 2,
+        "S15": 1,
+        "S10": 2
+      },
+      "tiers": {
+        "B": 2,
+        "C": 3
+      },
+      "unknown": [
+        "S15"
+      ]
+    },
+    {
+      "section_id": "s3",
+      "title": "Preserving Records with LEFT JOIN",
+      "kind": "concept",
+      "sentences": 5,
+      "cited_sentences": 5,
+      "coverage": 1.0,
+      "sources": {
+        "S10": 1,
+        "S3": 3,
+        "S5": 2,
+        "S11": 2
+      },
+      "tiers": {
+        "C": 2,
+        "B": 2
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s4",
+      "title": "Predicting Outcomes for Missing Matches",
+      "kind": "concept",
+      "sentences": 5,
+      "cited_sentences": 4,
+      "coverage": 0.8,
+      "sources": {
+        "S4": 1,
+        "S13": 1,
+        "S3": 1,
+        "S11": 2,
+        "S12": 1
+      },
+      "tiers": {
+        "B": 2,
+        "C": 3
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s5",
+      "title": "Working with SQL Joins",
+      "kind": "example",
+      "sentences": 5,
+      "cited_sentences": 0,
+      "coverage": 0.0,
+      "sources": {},
+      "tiers": {},
+      "unknown": []
+    },
+    {
+      "section_id": "s6",
+      "title": "Common Pitfalls and Misconceptions",
+      "kind": "misconceptions",
+      "sentences": 7,
+      "cited_sentences": 2,
+      "coverage": 0.29,
+      "sources": {
+        "S5": 1,
+        "S12": 1,
+        "S11": 1
+      },
+      "tiers": {
+        "B": 1,
+        "C": 2
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s7",
+      "title": "Query Prediction and Design Exercise",
+      "kind": "activity",
+      "sentences": 8,
+      "cited_sentences": 4,
+      "coverage": 0.5,
+      "sources": {
+        "S4": 2,
+        "S9": 1,
+        "S3": 3,
+        "S6": 1,
+        "S5": 1
+      },
+      "tiers": {
+        "B": 4,
+        "C": 1
+      },
+      "unknown": []
+    },
+    {
+      "section_id": "s8",
+      "title": "Lesson Summary",
+      "kind": "recap",
+      "sentences": 3,
+      "cited_sentences": 3,
+      "coverage": 1.0,
+      "sources": {
+        "S4": 2,
+        "S9": 1,
+        "S13": 1,
+        "S3": 2,
+        "S5": 1,
+        "S11": 2
+      },
+      "tiers": {
+        "B": 3,
+        "C": 3
+      },
+      "unknown": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "7.2. Table Expressions",
+      "url": "https://www.postgresql.org/docs/current/queries-table-expressions.html",
+      "kind": "spec",
+      "tier": "A",
+      "tier_reason": "official PostgreSQL documentation",
+      "relevance": 0.758,
+      "cited": 0,
+      "published": "2026-08-13"
+    },
+    {
+      "id": "S2",
+      "title": "Sams teach yourself SQL in 10 minutes",
+      "url": "https://openlibrary.org/works/OL64832W",
+      "kind": "book",
+      "tier": "A",
+      "tier_reason": "published book (metadata and description only)",
+      "relevance": 0.575,
+      "cited": 0,
+      "published": "1999"
+    },
+    {
+      "id": "S3",
+      "title": "SQL LEFT JOIN - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/sql/sql-left-join/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.781,
+      "cited": 9,
+      "published": "2021-04-10"
+    },
+    {
+      "id": "S4",
+      "title": "SQL Inner Join - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/sql/sql-inner-join/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.78,
+      "cited": 8,
+      "published": "2021-05-01"
+    },
+    {
+      "id": "S5",
+      "title": "SQL Joins (Inner, Left, Right and Full Join) - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/sql/sql-join-set-1-inner-left-right-and-full-joins/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.767,
+      "cited": 6,
+      "published": "2016-12-21"
+    },
+    {
+      "id": "S6",
+      "title": "PostgreSQL - Joins - GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/postgresql/postgresql-joins/",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site (uneven quality)",
+      "relevance": 0.764,
+      "cited": 1,
+      "published": "2020-05-10"
+    },
+    {
+      "id": "S7",
+      "title": "SQL LEFT JOIN | Programiz",
+      "url": "https://www.programiz.com/sql/left-join",
+      "kind": "web",
+      "tier": "B",
+      "tier_reason": "tutorial site",
+      "relevance": 0.762,
+      "cited": 0,
+      "published": "2021-12-20"
+    },
+    {
+      "id": "S8",
+      "title": "Join (SQL) - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Join_(SQL)",
+      "kind": "wiki",
+      "tier": "B",
+      "tier_reason": "encyclopedia (secondary, check citations)",
+      "relevance": 0.741,
+      "cited": 0,
+      "published": null
+    },
+    {
+      "id": "S9",
+      "title": "Inner Join",
+      "url": "https://www.sqltutorial.net/inner-join.html",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.782,
+      "cited": 4,
+      "published": "2018-01-01"
+    },
+    {
+      "id": "S10",
+      "title": "When to Use LEFT JOIN vs INNER JOIN in SQL: Key Differences, Use Cases & Practical Examples",
+      "url": "https://www.tutorialpedia.org/blog/when-to-use-left-join-and-when-to-use-inner-join/",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.769,
+      "cited": 3,
+      "published": "2026-07-28"
+    },
+    {
+      "id": "S11",
+      "title": "SQL LEFT JOIN Explained With Examples",
+      "url": "https://learn.programmingline.com/learn/sql/sql-left-join",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.76,
+      "cited": 7,
+      "published": "2026-07-20"
+    },
+    {
+      "id": "S12",
+      "title": "9 Practical Examples of SQL LEFT JOIN",
+      "url": "https://learnsql.com/blog/left-join-examples/",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.757,
+      "cited": 2,
+      "published": "2024-02-08"
+    },
+    {
+      "id": "S13",
+      "title": "SQL INNER JOIN Tutorial - SQL Server Guides",
+      "url": "https://sqlserverguides.com/sql-inner-join-tutorial/",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.756,
+      "cited": 4,
+      "published": "2026-06-25"
+    },
+    {
+      "id": "S14",
+      "title": "PostgreSQL Joins: A Visual Explanation of PostgreSQL Joins",
+      "url": "https://neon.com/postgresql/tutorial/joins",
+      "kind": "web",
+      "tier": "C",
+      "tier_reason": "unclassified site",
+      "relevance": 0.736,
+      "cited": 0,
+      "published": "2026-06-03"
+    }
+  ],
+  "copied": [],
+  "issues": [
+    {
+      "id": "F1",
+      "layer": "factual",
+      "severity": "high",
+      "category": "unknown citation",
+      "section_id": "s2",
+      "description": "cites [S15], which is not one of the research sources",
+      "evidence": "",
+      "suggestion": "replace [S15] with a real source id or remove the claim",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "F2",
+      "layer": "factual",
+      "severity": "medium",
+      "category": "uncited section",
+      "section_id": "s5",
+      "description": "only 0 of 5 sentences carry a citation in a example section",
+      "evidence": "",
+      "suggestion": "add source ids to the factual sentences, or move unsupported material out",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "F3",
+      "layer": "factual",
+      "severity": "medium",
+      "category": "no primary source",
+      "section_id": null,
+      "description": "the lesson does not cite a single tier A (primary) source",
+      "evidence": "",
+      "suggestion": "cite the specification or official documentation for the core definitions",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    }
+  ],
+  "errors": [],
+  "version": 3,
+  "created_at": 1794042350.726
+}

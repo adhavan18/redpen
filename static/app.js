@@ -252,7 +252,7 @@ function preview(el, doc) {
     html += doc.quiz.map((q, i) => `<div class="quizq"><b>${i + 1}. ${esc(q.question)}</b><ol type="A">${q.options.map((o, oi) =>
       `<li class="${oi === q.answer_index ? "ans" : ""}">${esc(o)}</li>`).join("")}</ol><div class="small muted" style="margin-top:6px">${esc(q.explanation)}</div></div>`).join("");
   }
-  const cited = new Set([...doc.sections.map((s) => s.body_md).join(" ").matchAll(/\[(S\d+)\]/g)].map((m) => m[1]));
+  const cited = new Set([...doc.sections.map((s) => s.body_md).join(" ").matchAll(/\[\s*(S\d+(?:\s*[,;]\s*[SM]\d+)*)\s*\]/g)].flatMap((m) => m[1].match(/S\d+/g)));
   html += `<div class="kind">sources</div><h2 class="sec">References</h2><ol style="padding-left:20px">${(r?.sources || []).filter((s) => cited.has(s.id)).map((s) =>
     `<li value="${s.id.slice(1)}"><a href="${esc(s.url)}" target="_blank">${esc(s.title)}</a> <span class="pill ${s.tier}">tier ${s.tier}</span> <span class="muted small">${esc(s.tier_reason)}</span></li>`).join("")}</ol>`;
   el.innerHTML = `<div class="card"><div class="prose ${S.heat ? "heat" : ""}">${html}</div></div>`;

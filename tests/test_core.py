@@ -197,3 +197,14 @@ def test_rate_limiter_queues_past_the_budget(monkeypatch):
     assert not slept
     lim.wait("m")  # fourth call inside the same minute has to wait
     assert slept and 59 < slept[0] <= 60.1
+
+
+def test_export_lists_sources_cited_in_combined_form():
+    st = storage.create("HTTP", "Explain GET and POST to students", "x")
+    d = doc()
+    d["sections"][1]["body_md"] = "GET retrieves a resource [S1, S2]."
+    storage.save_version(st["id"], d, "ai", "draft")  # stored un-normalized, like older lessons
+    research = {"sources": [{"id": f"S{i}", "kind": "web", "title": f"t{i}", "url": f"https://x/{i}", "tier": "B",
+                             "tier_reason": "r"} for i in (1, 2)], "misconceptions": []}
+    md = export.lesson_markdown(generate.normalize_doc(storage.load_version(st["id"])["doc"]), research)
+    assert "**[S2]**" in md and "[S1, S2]" not in md

@@ -1,0 +1,19 @@
+{
+  "lesson": "SQL Joins",
+  "objective": "Write INNER and LEFT JOIN queries and predict which rows each returns when matching rows are missing.",
+  "version": 3,
+  "exported_at": "2026-11-07T15:16:51",
+  "gate": {
+    "ok": false,
+    "reasons": [
+      "4 high-severity finding(s) are still open (apply or dismiss them)"
+    ],
+    "version": 3
+  },
+  "override_reason": "sample export: qc 2 flags the 47-minute plan and open findings; kept as-is so the report shows them",
+  "qc_versions": {
+    "factual": 3,
+    "instructional": 3
+  },
+  "minutes": 47
+}

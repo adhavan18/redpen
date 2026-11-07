@@ -1,0 +1,182 @@
+{
+  "title": "SQL Joins",
+  "objective": "Write INNER and LEFT JOIN queries and predict which rows each returns when matching rows are missing.",
+  "audience": "first-year computer science undergraduates",
+  "objective_parts": [
+    "Write INNER JOIN queries to combine rows from multiple tables based on a matching condition.",
+    "Write LEFT JOIN queries to include all records from the left table alongside matching right table records.",
+    "Predict which rows each JOIN type returns when matching rows are missing."
+  ],
+  "sections": [
+    {
+      "id": "s1",
+      "kind": "hook",
+      "title": "The Missing Data Mystery",
+      "minutes": 3,
+      "body_md": "Imagine you manage a university database. One table holds student records, while another records course enrollments. When you want to see who is enrolled in what, some students seem to vanish from your reports entirely because they haven't picked a class yet, while courses without students disappear too. If you only look at one table at a time, you miss the full picture. Relational databases store data across separate, normalized tables to reduce redundancy, but to answer real questions, you need a way to stitch those tables back together based on related columns.\n\nQuick check: before reading on, write down which rows you think a LEFT JOIN keeps."
+    },
+    {
+      "id": "s2",
+      "kind": "concept",
+      "title": "Combining Tables with INNER JOIN",
+      "minutes": 6,
+      "body_md": "To combine rows from two or more tables based on a shared column, you use an INNER JOIN [S4]. This operation finds the strict mathematical intersection of both datasets [S13]. It looks at a common key—such as a student ID or department ID—and returns only the rows where matching values exist in both tables [S5][S9][S15]. If a record exists in one table but has no corresponding match in the other, it is completely filtered out and excluded from your results [S4][S10].\n\nIn SQL, you specify this in your `FROM` clause [Yh4CrPHVBdE]. The syntax lists the first table, declares the `INNER JOIN` keyword alongside the second table, and uses an `ON` clause to define the matching criteria [S4][S9]. Because inner joins only output strict matches, they are highly efficient for querying tightly linked relationships, such as valid sales tied to existing products [S10][S13]."
+    },
+    {
+      "id": "s3",
+      "kind": "concept",
+      "title": "Preserving Records with LEFT JOIN",
+      "minutes": 6,
+      "body_md": "An inner join discards unmatched rows, but what if you need to keep every single record from your primary table regardless of whether a match exists elsewhere [S10]? For this, you use a LEFT JOIN (also called a LEFT OUTER JOIN) [S3]. A left join returns all rows from the left table, paired with any matching rows from the right table [S3][S5]. \n\nWhen a row in the left table lacks a match in the right table, the query still retains that left-table row, filling in the missing right-table columns with `NULL` values [S3][S5][S11]. This makes left joins essential for auditing tasks, such as finding every customer including those who have never placed an order, or finding departments with zero staff [S11]."
+    },
+    {
+      "id": "s4",
+      "kind": "concept",
+      "title": "Predicting Outcomes for Missing Matches",
+      "minutes": 6,
+      "body_md": "When designing queries, you must be able to predict how missing data affects your output grid. An `INNER JOIN` acts as a gatekeeper: if a foreign key is broken or missing on either side, the entire row is dropped [S4][S13]. A `LEFT JOIN` acts as an inclusive safety net for the table declared on the left side of the query, protecting its rows from deletion while padding missing right-side data with `NULL` [S3][S11].\n\nA common pitfall occurs when placing conditions on right-table columns inside a `WHERE` clause instead of the `ON` clause [S11]. Filtering a right-table column for a non-null value in the `WHERE` clause can accidentally turn your `LEFT JOIN` back into an `INNER JOIN`, silently erasing your unmatched rows because the `WHERE` filter evaluates after the join and excludes the newly padded `NULL` values [S12]."
+    },
+    {
+      "id": "s5",
+      "kind": "example",
+      "title": "Working with SQL Joins",
+      "minutes": 6,
+      "body_md": "Consider two tables: `students` and `enrollments`. The `students` table has student IDs and names, while `enrollments` tracks student IDs and course IDs. Some students have not enrolled in any courses.\n\n```python\n# Simulating relational joins in Python standard library\nstudents = [\n    {\"id\": 1, \"name\": \"Alice\"},\n    {\"id\": 2, \"name\": \"Bob\"},\n    {\"id\": 3, \"name\": \"Charlie\"}\n]\n\nenrollments = [\n    {\"id\": 1, \"course\": \"CS101\"},\n    {\"id\": 2, \"course\": \"CS102\"}\n]\n\n# INNER JOIN simulation\ninner_result = [\n    (s[\"name\"], e[\"course\"])\n    for s in students\n    for e in enrollments\n    if s[\"id\"] == e[\"id\"]\n]\nprint(\"INNER:\", inner_result)\n\n# LEFT JOIN simulation\nleft_result = []\nfor s in students:\n    match = [e[\"course\"] for e in enrollments if e[\"id\"] == s[\"id\"]]\n    if match:\n        for c in match:\n            left_result.append((s[\"name\"], c))\n    else:\n        left_result.append((s[\"name\"], None))\nprint(\"LEFT:\", left_result)\n```\n\n```output\nINNER: [('Alice', 'CS101'), ('Bob', 'CS102')]\nLEFT: [('Alice', 'CS101'), ('Bob', 'CS102'), ('Charlie', None)]\n```\n\nNotice how Charlie has no course match. The inner join drops Charlie completely, whereas the left join retains Charlie and outputs `None` (SQL's `NULL`) for the course column."
+    },
+    {
+      "id": "s6",
+      "kind": "misconceptions",
+      "title": "Common Pitfalls and Misconceptions",
+      "minutes": 4,
+      "body_md": "### Misconception 1: Left joins keep rows from both tables when matches are missing\nBeginners often believe a `LEFT JOIN` will preserve unmatched rows from both the left and right tables [M1]. In reality, a left join only guarantees that all rows from the *left* table are kept. Unmatched rows from the *right* table are still excluded unless you use a `FULL JOIN` [S5][S12].\n\n### Misconception 2: Putting join filters in the WHERE clause behaves the same as the ON clause\nMany learners write `LEFT JOIN` queries and filter right-table attributes in the `WHERE` clause, expecting unmatched rows to remain with nulls. Because the `WHERE` clause executes after the join is built, filtering on a right-table column can inadvertently remove your `NULL` rows, transforming your outer join into an inner join [S11]."
+    },
+    {
+      "id": "s7",
+      "kind": "activity",
+      "title": "Query Prediction and Design Exercise",
+      "minutes": 8,
+      "body_md": "In this hands-on task, you will analyze table schemas and predict output rows.\n\n1. Review a mock database schema containing an `employees` table (columns: `emp_id`, `name`) and a `departments` table (columns: `dept_id`, `emp_id`, `dept_name`). Note that two employees are not assigned to any department.\n2. Write an `INNER JOIN` query linking `employees` and `departments` on `emp_id`. Predict how many rows will be returned if there are 5 total employees and 3 have departments [S4][S9].\n3. Rewrite the query as a `LEFT JOIN` keeping `employees` on the left side [S3][S6]. Predict what values appear for the unassigned employees' department columns [S3][S5].\n4. Self-check: Confirm that your inner join returns 3 rows while your left join returns all 5 rows, with `NULL` filling the missing department fields for the unassigned workers [S3][S4]."
+    },
+    {
+      "id": "s8",
+      "kind": "recap",
+      "title": "Lesson Summary",
+      "minutes": 2,
+      "body_md": "- **INNER JOIN**: Combines rows from multiple tables based on a matching condition, returning strictly the intersecting records and dropping unmatched rows [S4][S9][S13].\n- **LEFT JOIN**: Retains every record from the left table, attaching matching right-table data and placing `NULL` where matches are absent [S3][S5][S11].\n- **Prediction**: Missing foreign keys cause inner joins to eliminate rows entirely, whereas left joins protect left-table rows while converting missing right-side values to `NULL` [S3][S4][S11]."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which SQL operation should you use when you want to retrieve every customer record from a customer table, alongside any matching orders from an orders table, ensuring customers without orders are still included?",
+      "options": [
+        "CROSS JOIN",
+        "FULL JOIN",
+        "INNER JOIN",
+        "LEFT JOIN"
+      ],
+      "answer_index": 3,
+      "explanation": "A LEFT JOIN returns all rows from the left table, paired with matching rows from the right table, and fills in NULL when there is no match.",
+      "objective_part": "Write LEFT JOIN queries to include all records from the left table alongside matching right table records.",
+      "distractor_rationale": [
+        "CROSS JOIN produces a Cartesian product and is not used for matching specific table relationships.",
+        "FULL JOIN keeps unmatched rows from both tables, which is broader than just preserving the left table.",
+        "INNER JOIN excludes records from the left table that do not have a matching record in the right table.",
+        "correct"
+      ],
+      "id": "q1"
+    },
+    {
+      "question": "You execute an INNER JOIN between an 'authors' table and a 'books' table on 'author_id'. One author has written no books and has no matching entry in the books table. What happens to this author in the result set?",
+      "options": [
+        "The author is excluded entirely from the result set.",
+        "The query throws a syntax error due to missing data.",
+        "The author is included with NULL values for book columns.",
+        "The author is duplicated for every book in the database."
+      ],
+      "answer_index": 0,
+      "explanation": "An INNER JOIN acts as an intersection and gatekeeper, filtering out and completely excluding any rows that lack a matching key in both tables.",
+      "objective_part": "Predict which rows each JOIN type returns when matching rows are missing.",
+      "distractor_rationale": [
+        "correct",
+        "Relational databases do not throw syntax errors for missing data values during joins.",
+        "NULL values for missing matches are a feature of LEFT JOIN, not INNER JOIN.",
+        "Duplicating every book would resemble a CROSS JOIN without conditions, not an INNER JOIN."
+      ],
+      "id": "q2"
+    },
+    {
+      "question": "How do you properly construct an INNER JOIN query in SQL to combine 'employees' and 'departments' tables based on 'department_id'?",
+      "options": [
+        "SELECT * FROM employees JOIN departments MATCH employees.department_id = departments.department_id;",
+        "SELECT * FROM employees INNER JOIN departments ON employees.department_id = departments.department_id;",
+        "SELECT * FROM employees, departments USING INNER JOIN department_id;",
+        "SELECT * FROM employees INNER JOIN departments WHERE employees.department_id = departments.department_id;"
+      ],
+      "answer_index": 1,
+      "explanation": "Standard SQL syntax for an inner join lists the tables with the INNER JOIN keyword and specifies the matching condition using an ON clause.",
+      "objective_part": "Write INNER JOIN queries to combine rows from multiple tables based on a matching condition.",
+      "distractor_rationale": [
+        "The MATCH keyword is not standard SQL syntax for joining tables.",
+        "correct",
+        "The USING INNER JOIN syntax is invalid in standard SQL.",
+        "Using WHERE for join conditions is a pitfall that can alter join behavior or lead to confusion, whereas the ON clause is the correct standard construct."
+      ],
+      "id": "q3"
+    },
+    {
+      "question": "When performing a LEFT JOIN where a row in the right table has no corresponding match in the left table, what is returned for the left table's columns in that row?",
+      "options": [
+        "Default zero values",
+        "NULL values",
+        "An error code",
+        "The row is excluded from the result set"
+      ],
+      "answer_index": 1,
+      "explanation": "A LEFT JOIN preserves all rows from the left table; when right-table matches are missing, right-table columns are filled with NULL values.",
+      "objective_part": "Predict which rows each JOIN type returns when matching rows are missing.",
+      "distractor_rationale": [
+        "Databases insert NULL rather than arbitrary default zero values for unmatched columns.",
+        "correct",
+        "Missing matches in a join do not trigger error codes in SQL.",
+        "Unmatched rows from the left table are retained, not excluded."
+      ],
+      "id": "q4"
+    },
+    {
+      "question": "Which of the following describes the key structural difference between an INNER JOIN and a LEFT JOIN?",
+      "options": [
+        "INNER JOIN requires an ON clause, while LEFT JOIN operates without any matching condition.",
+        "INNER JOIN returns only matching intersection records, while LEFT JOIN preserves all records from the left table regardless of matches.",
+        "INNER JOIN keeps all records from both tables, while LEFT JOIN keeps only matching records.",
+        "INNER JOIN only works with numerical keys, while LEFT JOIN handles text strings."
+      ],
+      "answer_index": 1,
+      "explanation": "An INNER JOIN returns only the strict intersection of matching rows, whereas a LEFT JOIN guarantees that all rows from the left table are retained.",
+      "objective_part": "Predict which rows each JOIN type returns when matching rows are missing.",
+      "distractor_rationale": [
+        "Both inner and left joins require a matching condition specified via an ON clause.",
+        "correct",
+        "This incorrectly reverses the operational behaviors of inner and left joins.",
+        "Both join types can handle numerical keys and text strings equally."
+      ],
+      "id": "q5"
+    }
+  ],
+  "quiz_minutes": 5,
+  "videos": [
+    {
+      "video_id": "G3lJAxg1cy8",
+      "title": "Learn MySQL joins in 5 minutes!",
+      "channel": "Bro Code",
+      "url": "https://www.youtube.com/watch?v=G3lJAxg1cy8&t=219s",
+      "start": 219,
+      "end": 302.6,
+      "watch_minutes": 1.4,
+      "in_lesson": true,
+      "why": "Demonstrates visually how left joins display everything from the table on the left while inner joins connect matching rows.",
+      "after_section": "s3",
+      "tier": "B"
+    }
+  ],
+  "evidence_gaps": []
+}

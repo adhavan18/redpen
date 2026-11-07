@@ -1,0 +1,915 @@
+{
+  "layer": "qc_instructional",
+  "summary": {
+    "total_minutes": 44,
+    "rubric_avg": 4.6,
+    "post_accuracy": 100,
+    "pre_accuracy": 45,
+    "learning_gain": 55,
+    "coverage": {
+      "full": 2
+    },
+    "confusions": 4,
+    "issues": {
+      "low": 7,
+      "medium": 2
+    }
+  },
+  "measurements": {
+    "total_minutes": 44,
+    "pacing": [
+      {
+        "section_id": "s1",
+        "title": "What Happens When You Submit a Web Form?",
+        "kind": "hook",
+        "planned": 3,
+        "reading": 0.5,
+        "words": 97
+      },
+      {
+        "section_id": "s2",
+        "title": "HTTP Request Methods: GET vs POST",
+        "kind": "concept",
+        "planned": 7,
+        "reading": 2.0,
+        "words": 352
+      },
+      {
+        "section_id": "s3",
+        "title": "HTTP Response Status Code Categories",
+        "kind": "concept",
+        "planned": 7,
+        "reading": 1.8,
+        "words": 332
+      },
+      {
+        "section_id": "s4",
+        "title": "Executing GET and POST Requests in Python",
+        "kind": "example",
+        "planned": 6,
+        "reading": 5.2,
+        "words": 171
+      },
+      {
+        "section_id": "s5",
+        "title": "Common Misconceptions About HTTP Methods and Status Codes",
+        "kind": "misconceptions",
+        "planned": 5,
+        "reading": 1.5,
+        "words": 262
+      },
+      {
+        "section_id": "s6",
+        "title": "Hands-on Request Analysis and Status Code Classification",
+        "kind": "activity",
+        "planned": 9,
+        "reading": 1.5,
+        "words": 275
+      },
+      {
+        "section_id": "s7",
+        "title": "Key Takeaways",
+        "kind": "recap",
+        "planned": 2,
+        "reading": 0.7,
+        "words": 134
+      }
+    ],
+    "quiz_per_part": {
+      "Explain GET and POST methods": 2,
+      "Distinguish between 2xx, 4xx, and 5xx response status categories": 3
+    },
+    "long_sentences": [],
+    "answer_slots": {
+      "2": 1,
+      "0": 2,
+      "1": 2
+    },
+    "run_sheet": [
+      {
+        "start": 0,
+        "end": 3,
+        "what": "What Happens When You Submit a Web Form?",
+        "kind": "hook"
+      },
+      {
+        "start": 3,
+        "end": 10,
+        "what": "HTTP Request Methods: GET vs POST",
+        "kind": "concept"
+      },
+      {
+        "start": 10,
+        "end": 17,
+        "what": "HTTP Response Status Code Categories",
+        "kind": "concept"
+      },
+      {
+        "start": 17,
+        "end": 23,
+        "what": "Executing GET and POST Requests in Python",
+        "kind": "example"
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "what": "Common Misconceptions About HTTP Methods and Status Codes",
+        "kind": "misconceptions"
+      },
+      {
+        "start": 28,
+        "end": 37,
+        "what": "Hands-on Request Analysis and Status Code Classification",
+        "kind": "activity"
+      },
+      {
+        "start": 37,
+        "end": 39,
+        "what": "Key Takeaways",
+        "kind": "recap"
+      },
+      {
+        "start": 39,
+        "end": 44,
+        "what": "knowledge check",
+        "kind": "quiz"
+      }
+    ],
+    "section_kinds": {
+      "hook": 1,
+      "concept": 2,
+      "example": 1,
+      "misconceptions": 1,
+      "activity": 1,
+      "recap": 1
+    }
+  },
+  "classroom": {
+    "cohort": [
+      {
+        "name": "Asha",
+        "level": "novice",
+        "background": "first-year student, has written a little Python in school",
+        "habits": "reads every word, takes analogies literally, gets lost when two terms are introduced at once"
+      },
+      {
+        "name": "Ravi",
+        "level": "struggling",
+        "background": "second-year student who passed programming courses by memorising, weak English reading speed",
+        "habits": "skims, reads headings and bold text, mixes up similar-looking terms and numbers"
+      },
+      {
+        "name": "Meera",
+        "level": "average",
+        "background": "builds small projects from tutorials, has used libraries without knowing what happens underneath",
+        "habits": "reads explanations, skips long paragraphs, tries the examples"
+      },
+      {
+        "name": "Karthik",
+        "level": "strong",
+        "background": "has shipped real projects and is comfortable reading documentation",
+        "habits": "reads quickly, notices imprecise wording, answers from understanding not memory"
+      }
+    ],
+    "responses": {
+      "pre": {
+        "Asha": {
+          "0": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 2,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 0,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 2,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          }
+        },
+        "Ravi": {
+          "0": {
+            "chosen": 0,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 2,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 0,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 2,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          }
+        },
+        "Meera": {
+          "0": {
+            "chosen": 2,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 3,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 2,
+            "confidence": 1,
+            "quote": "",
+            "grounded": false
+          }
+        },
+        "Karthik": {
+          "0": {
+            "chosen": 2,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "",
+            "grounded": false
+          },
+          "4": {
+            "chosen": 3,
+            "confidence": 2,
+            "quote": "",
+            "grounded": false
+          }
+        }
+      },
+      "post": {
+        "Asha": {
+          "0": {
+            "chosen": 2,
+            "confidence": 5,
+            "quote": "Data Transmission: GET sends parameters appended directly to the URL as query parameters [S6].",
+            "grounded": true
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "POST transfers data inside the request body rather than in the URL [S6].",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue [S1, S8, S13].",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "4xx (Client Error): Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side [S1, S8, S13].",
+            "grounded": true
+          },
+          "4": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request) [S1, S8].",
+            "grounded": true
+          }
+        },
+        "Ravi": {
+          "0": {
+            "chosen": 2,
+            "confidence": 4,
+            "quote": "Notice that the GET request appends data directly to the URL (?user=alice&city=boston). In contrast, the POST request encodes the payload into bytes and sends it inside the HTTP request body.",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 4,
+            "quote": "Furthermore, POST parameters are hidden from the browser address bar.",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 4,
+            "quote": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue.",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 4,
+            "quote": "Bad request syntax or client-side issues yield 4xx (Client Error) codes.",
+            "grounded": true
+          },
+          "4": {
+            "chosen": 0,
+            "confidence": 4,
+            "quote": "For instance, an unrecognized code like 471 must be treated as equivalent to 400 (Bad Request).",
+            "grounded": true
+          }
+        },
+        "Meera": {
+          "0": {
+            "chosen": 2,
+            "confidence": 5,
+            "quote": "Data Location | Appended to URL query string | Sent inside request body",
+            "grounded": false
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "POST transfers data inside the request body rather than in the URL",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "4xx (Client Error): Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side",
+            "grounded": true
+          },
+          "4": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request)",
+            "grounded": true
+          }
+        },
+        "Karthik": {
+          "0": {
+            "chosen": 2,
+            "confidence": 5,
+            "quote": "GET sends parameters appended directly to the URL as query parameters [S6].",
+            "grounded": true
+          },
+          "1": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "POST transfers data inside the request body rather than in the URL [S6].",
+            "grounded": true
+          },
+          "2": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue [S1, S8, S13].",
+            "grounded": false
+          },
+          "3": {
+            "chosen": 1,
+            "confidence": 5,
+            "quote": "4xx (Client Error): Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side [S1, S8, S13].",
+            "grounded": true
+          },
+          "4": {
+            "chosen": 0,
+            "confidence": 5,
+            "quote": "If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request) [S1, S8].",
+            "grounded": true
+          }
+        }
+      }
+    },
+    "items": [
+      {
+        "question_index": 0,
+        "id": "q1",
+        "question": "Which of the following correctly describes a structural distinction between HTTP GET and POST requests?",
+        "answer_index": 2,
+        "options": [
+          "GET transfers data within the request body, whereas POST appends parameters to the URL.",
+          "GET requests cannot be bookmarked by browsers, whereas POST requests are stored in browser history.",
+          "GET sends parameters as part of the URL query string, whereas POST transfers parameters inside the request body.",
+          "GET is an unsafe method intended to modify server state, whereas POST is strictly read-only."
+        ],
+        "p_pre": 0.5,
+        "pre_answers": {
+          "Asha": 1,
+          "Ravi": 0,
+          "Meera": 2,
+          "Karthik": 2
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 2,
+          "Ravi": 2,
+          "Meera": 2,
+          "Karthik": 2
+        },
+        "discrimination": 0.0,
+        "grounded": 2,
+        "quotes": {
+          "Asha": "Data Transmission: GET sends parameters appended directly to the URL as query parameters [S6].",
+          "Ravi": "Notice that the GET request appends data directly to the URL (?user=alice&city=boston). In contrast, the POST request encodes the payload into bytes and sends it inside the HTTP request body.",
+          "Meera": "Data Location | Appended to URL query string | Sent inside request body",
+          "Karthik": "GET sends parameters appended directly to the URL as query parameters [S6]."
+        },
+        "option_picks": [
+          1,
+          1,
+          6,
+          0
+        ],
+        "dead_distractors": [
+          3
+        ],
+        "gain": 0.5
+      },
+      {
+        "question_index": 1,
+        "id": "q2",
+        "question": "A web application form requires users to enter a new password. Why should the web developer configure the form to use POST instead of GET?",
+        "answer_index": 0,
+        "options": [
+          "POST places sensitive form data inside the request body rather than displaying it in the browser URL bar.",
+          "GET requests are restricted from sending text strings to web servers.",
+          "GET automatically encrypts parameters, whereas POST sends plain text without TLS.",
+          "POST is a safe method that guarantees no state changes occur on the backend server."
+        ],
+        "p_pre": 0.5,
+        "pre_answers": {
+          "Asha": 2,
+          "Ravi": 2,
+          "Meera": 0,
+          "Karthik": 0
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 0,
+          "Ravi": 0,
+          "Meera": 0,
+          "Karthik": 0
+        },
+        "discrimination": 0.0,
+        "grounded": 4,
+        "quotes": {
+          "Asha": "POST transfers data inside the request body rather than in the URL [S6].",
+          "Ravi": "Furthermore, POST parameters are hidden from the browser address bar.",
+          "Meera": "POST transfers data inside the request body rather than in the URL",
+          "Karthik": "POST transfers data inside the request body rather than in the URL [S6]."
+        },
+        "option_picks": [
+          6,
+          0,
+          2,
+          0
+        ],
+        "dead_distractors": [
+          1,
+          3
+        ],
+        "gain": 0.5
+      },
+      {
+        "question_index": 2,
+        "id": "q3",
+        "question": "An API client submits a valid request to an API endpoint. While processing the request, the server's internal database service crashes. Which status code category should the server return?",
+        "answer_index": 1,
+        "options": [
+          "3xx (Redirection)",
+          "5xx (Server Error)",
+          "4xx (Client Error)",
+          "2xx (Successful)"
+        ],
+        "p_pre": 0.75,
+        "pre_answers": {
+          "Asha": 1,
+          "Ravi": 1,
+          "Meera": 3,
+          "Karthik": 1
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 1,
+          "Ravi": 1,
+          "Meera": 1,
+          "Karthik": 1
+        },
+        "discrimination": 0.0,
+        "grounded": 0,
+        "quotes": {
+          "Asha": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue [S1, S8, S13].",
+          "Ravi": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue.",
+          "Meera": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue",
+          "Karthik": "A 5xx status code indicates that the server failed to fulfill an apparently valid request due to an internal server issue [S1, S8, S13]."
+        },
+        "option_picks": [
+          0,
+          7,
+          0,
+          1
+        ],
+        "dead_distractors": [
+          0,
+          2
+        ],
+        "gain": 0.25
+      },
+      {
+        "question_index": 3,
+        "id": "q4",
+        "question": "A client sends an HTTP request containing malformed JSON syntax in its request payload. How should the server categorize its response status code?",
+        "answer_index": 1,
+        "options": [
+          "5xx class because any execution failure must be classified as a server error.",
+          "4xx class because the request contains bad syntax or a client-side error.",
+          "2xx class because the network packet was successfully delivered.",
+          "1xx class to request informational header updates from the client."
+        ],
+        "p_pre": 0.5,
+        "pre_answers": {
+          "Asha": 0,
+          "Ravi": 0,
+          "Meera": 1,
+          "Karthik": 1
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 1,
+          "Ravi": 1,
+          "Meera": 1,
+          "Karthik": 1
+        },
+        "discrimination": 0.0,
+        "grounded": 4,
+        "quotes": {
+          "Asha": "4xx (Client Error): Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side [S1, S8, S13].",
+          "Ravi": "Bad request syntax or client-side issues yield 4xx (Client Error) codes.",
+          "Meera": "4xx (Client Error): Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side",
+          "Karthik": "4xx (Client Error): Indicates that the request cannot be fulfilled due to bad syntax or an issue originating on the client side [S1, S8, S13]."
+        },
+        "option_picks": [
+          2,
+          6,
+          0,
+          0
+        ],
+        "dead_distractors": [
+          2,
+          3
+        ],
+        "gain": 0.5
+      },
+      {
+        "question_index": 4,
+        "id": "q5",
+        "question": "A client receives an unrecognized HTTP status code of 471 from a server. According to the HTTP specification, how must the client handle this response?",
+        "answer_index": 0,
+        "options": [
+          "Treat the response as equivalent to status code 400 (Bad Request).",
+          "Crash the application because the status code is unregistered.",
+          "Ignore the status code and assume the request succeeded with 200 OK.",
+          "Treat the response as equivalent to status code 500 (Internal Server Error)."
+        ],
+        "p_pre": 0.0,
+        "pre_answers": {
+          "Asha": 2,
+          "Ravi": 2,
+          "Meera": 2,
+          "Karthik": 3
+        },
+        "p_post": 1.0,
+        "post_answers": {
+          "Asha": 0,
+          "Ravi": 0,
+          "Meera": 0,
+          "Karthik": 0
+        },
+        "discrimination": 0.0,
+        "grounded": 4,
+        "quotes": {
+          "Asha": "If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request) [S1, S8].",
+          "Ravi": "For instance, an unrecognized code like 471 must be treated as equivalent to 400 (Bad Request).",
+          "Meera": "If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request)",
+          "Karthik": "If a client receives an unrecognized status code (such as 471), it must treat it as equivalent to the base status code of that class (e.g., 400 Bad Request) [S1, S8]."
+        },
+        "option_picks": [
+          4,
+          0,
+          3,
+          1
+        ],
+        "dead_distractors": [
+          1
+        ],
+        "gain": 1.0
+      }
+    ],
+    "confusions": [
+      {
+        "student": "Asha",
+        "level": "novice",
+        "section_id": "s1",
+        "quote": "Understanding these mechanisms is essential for developing web applications and designing REST APIs [S7, S11].",
+        "why": "It mentions REST APIs out of nowhere without explaining what a REST API is, and I have no idea what that means."
+      },
+      {
+        "student": "Ravi",
+        "level": "struggling",
+        "section_id": "s5",
+        "quote": "Misconception 1: GET requests can never alter server state, and POST requests are inherently encrypted.",
+        "why": "I get confused because it mentions encryption here, but then it says POST is actually not encrypted in plain text, which mixes up my memory about secure passwords."
+      },
+      {
+        "student": "Meera",
+        "level": "average",
+        "section_id": "s5",
+        "quote": "both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS",
+        "why": "Wait, I always thought POST hid things safely, so finding out it is still in plain text makes me confused about when to actually use it."
+      },
+      {
+        "student": "Karthik",
+        "level": "strong",
+        "section_id": "s5",
+        "quote": "both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS",
+        "why": "The lesson introduces TLS/HTTPS here without previously defining it or explaining how it integrates with HTTP, which feels like a sudden jump in networking concepts."
+      }
+    ],
+    "failures": []
+  },
+  "review": {
+    "alignment": [
+      {
+        "objective_part": "Explain GET and POST methods",
+        "taught_in": [
+          1,
+          3
+        ],
+        "practised_in": [
+          5
+        ],
+        "assessed_by": [
+          0,
+          1
+        ],
+        "coverage": "full",
+        "note": "Both methods are thoroughly explained, practised through selection exercises, and assessed in the quiz."
+      },
+      {
+        "objective_part": "Distinguish between 2xx, 4xx, and 5xx response status categories",
+        "taught_in": [
+          2,
+          3
+        ],
+        "practised_in": [
+          5
+        ],
+        "assessed_by": [
+          2,
+          3,
+          4
+        ],
+        "coverage": "full",
+        "note": "Status code categories are taught, classified in practice steps, and tested across multiple quiz questions."
+      }
+    ],
+    "rubric": [
+      {
+        "criterion": "objective_alignment",
+        "score": 5,
+        "justification": "Every part of the learning objective is explicitly taught, practised, and tested in the quiz."
+      },
+      {
+        "criterion": "clarity",
+        "score": 4,
+        "justification": "The concepts are well explained, though minor confusion around TLS/HTTPS and encryption arises in the misconceptions section."
+      },
+      {
+        "criterion": "structure",
+        "score": 5,
+        "justification": "The lesson flows logically from hooks and concepts to Python code examples, misconceptions, practice, and a recap."
+      },
+      {
+        "criterion": "examples",
+        "score": 5,
+        "justification": "The Python urllib examples effectively demonstrate how GET and POST requests are constructed and return status codes."
+      },
+      {
+        "criterion": "practical_application",
+        "score": 5,
+        "justification": "Section 5 provides concrete scenarios for learners to select methods and classify status code outcomes."
+      },
+      {
+        "criterion": "assessment_quality",
+        "score": 5,
+        "justification": "The quiz questions directly align with the objective parts and show complete post-instruction mastery among simulated students."
+      },
+      {
+        "criterion": "pacing",
+        "score": 4,
+        "justification": "The computed reading time and planned duration are well balanced, though some sections are dense for their allocated time."
+      },
+      {
+        "criterion": "engagement",
+        "score": 4,
+        "justification": "The lesson includes good hooks, real-world Python code, and interactive practice exercises to keep learners engaged."
+      }
+    ],
+    "issues": [
+      {
+        "severity": "medium",
+        "category": "Clarity",
+        "section_index": 4,
+        "description": "The introduction of TLS/HTTPS creates confusion about plain text transmission versus form parameter safety.",
+        "evidence": "both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS",
+        "suggestion": "Add a brief explanatory sentence defining TLS/HTTPS as the transport layer security protocol that encrypts HTTP traffic between the browser and server."
+      },
+      {
+        "severity": "low",
+        "category": "Relevance",
+        "section_index": 0,
+        "description": "A mention of REST APIs is dropped without prior context or definition.",
+        "evidence": "Understanding these mechanisms is essential for developing web applications and designing REST APIs",
+        "suggestion": "Briefly define REST APIs as architectural styles that rely on standard HTTP methods and status codes before mentioning them."
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "I7",
+      "layer": "instructional",
+      "severity": "medium",
+      "category": "confusing passage",
+      "section_id": "s5",
+      "description": "3 simulated student(s) got stuck here",
+      "evidence": "Ravi (struggling): \"Misconception 1: GET requests can never alter server state, and POST requests are inherently encrypted.\" - I get confused because it mentions encryption here, but then it says POST is actually not encrypted in plain text, which mixes up my memory about secure passwords. / Meera (average): \"both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS\" - Wait, I always thought POST hid things safely, so finding out it is still in plain text makes me confused about when to actually use it. / Karthik (strong): \"both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS\" - The lesson introduces TLS/HTTPS here without previously defining it or explaining how it integrates with HTTP, which feels like a sudden jump in networking concepts.",
+      "suggestion": "define the term or add the missing step where they got stuck",
+      "origin": "simulated",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I8",
+      "layer": "instructional",
+      "severity": "medium",
+      "category": "Clarity",
+      "section_id": "s5",
+      "description": "The introduction of TLS/HTTPS creates confusion about plain text transmission versus form parameter safety.",
+      "evidence": "both GET and POST transmit data in plain text unless encrypted with TLS/HTTPS",
+      "suggestion": "Add a brief explanatory sentence defining TLS/HTTPS as the transport layer security protocol that encrypts HTTP traffic between the browser and server.",
+      "origin": "llm",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I1",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "pacing",
+      "section_id": "s2",
+      "description": "\"HTTP Request Methods: GET vs POST\" is about 2.0 min of reading for a 7-minute slot",
+      "evidence": "",
+      "suggestion": "add an example or a check-your-understanding prompt",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I2",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "pacing",
+      "section_id": "s3",
+      "description": "\"HTTP Response Status Code Categories\" is about 1.8 min of reading for a 7-minute slot",
+      "evidence": "",
+      "suggestion": "add an example or a check-your-understanding prompt",
+      "origin": "check",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I3",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q2: nobody in the simulated classroom picked \"GET requests are restricted from sending text strings to web servers.\", \"POST is a safe method that guarantees no state changes occur on the backend server.\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q2"
+    },
+    {
+      "id": "I4",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q3: nobody in the simulated classroom picked \"3xx (Redirection)\", \"4xx (Client Error)\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q3"
+    },
+    {
+      "id": "I5",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "dead distractors",
+      "section_id": "quiz",
+      "description": "Q4: nobody in the simulated classroom picked \"2xx class because the network packet was successfully delivered.\", \"1xx class to request informational header updates from the client.\"",
+      "evidence": "",
+      "suggestion": "replace them with options built on a real misconception",
+      "origin": "simulated",
+      "status": "open",
+      "note": null,
+      "question_id": "q4"
+    },
+    {
+      "id": "I6",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "confusing passage",
+      "section_id": "s1",
+      "description": "1 simulated student(s) got stuck here",
+      "evidence": "Asha (novice): \"Understanding these mechanisms is essential for developing web applications and designing REST APIs [S7, S11].\" - It mentions REST APIs out of nowhere without explaining what a REST API is, and I have no idea what that means.",
+      "suggestion": "define the term or add the missing step where they got stuck",
+      "origin": "simulated",
+      "status": "open",
+      "note": null
+    },
+    {
+      "id": "I9",
+      "layer": "instructional",
+      "severity": "low",
+      "category": "Relevance",
+      "section_id": "s1",
+      "description": "A mention of REST APIs is dropped without prior context or definition.",
+      "evidence": "Understanding these mechanisms is essential for developing web applications and designing REST APIs",
+      "suggestion": "Briefly define REST APIs as architectural styles that rely on standard HTTP methods and status codes before mentioning them.",
+      "origin": "llm",
+      "status": "open",
+      "note": null
+    }
+  ],
+  "errors": [],
+  "version": 1,
+  "created_at": 1794041556.639
+}

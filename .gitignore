@@ -10,3 +10,7 @@ video/recordings/
 .claude/
 video/public/rec/
 video/live-lesson.txt
+samples/*.zip
+video/raw/
+video/public/talk/
+video/out/
