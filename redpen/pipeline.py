@@ -58,7 +58,7 @@ def _run_step(lesson_id: str, step: str) -> bool:
             return True
 
         version = storage.load_state(lesson_id)["current_version"]
-        doc = storage.load_version(lesson_id, version)["doc"]
+        doc = generate.normalize_doc(storage.load_version(lesson_id, version)["doc"])
         if step == "qc_factual":
             report = factual.run(st, doc, res, vecs, log)
         else:

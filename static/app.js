@@ -238,17 +238,12 @@ function preview(el, doc) {
   (doc.videos || []).forEach((v) => (vidsAfter[v.after_section] ||= []).push(v));
   let html = "";
   if (sheet) html += timeline(sheet);
+  const pill = (id) => id[0] === "M"
+    ? (ms[id] ? `<a class="cite" href="${esc(ms[id].url)}" target="_blank" title="${esc(ms[id].title)}">${id}</a>` : id)
+    : `<a class="cite ${srcs[id]?.tier === "A" ? "A" : ""} ${srcs[id] ? "" : "bad"}" data-s="${id}">${id}</a>`;
   for (const sec of doc.sections) {
-    let md = sec.body_md;
-    for (const c of claims.filter((c) => c.section_id === sec.id)) {
-      const s = c.sentence.replace(/^\s*[-*+]\s+|^\s*\d+\.\s+/, "").trim();
-      const at = s.length > 12 ? md.indexOf(s) : -1;
-      if (at >= 0 && !md.slice(Math.max(0, at - 30), at).includes("<mark"))
-        md = md.slice(0, at) + `<mark class="claim ${c.verdict}" data-c="${c.idx}">` + s + "</mark>" + md.slice(at + s.length);
-    }
-    let body = mdToHtml(md)
-      .replace(/\[(S\d+)\]/g, (m, id) => `<a class="cite ${srcs[id]?.tier === "A" ? "A" : ""} ${srcs[id] ? "" : "bad"}" data-s="${id}">${id}</a>`)
-      .replace(/\[(M\d+)\]/g, (m, id) => ms[id] ? `<a class="cite" href="${esc(ms[id].url)}" target="_blank" title="${esc(ms[id].title)}">${id}</a>` : m);
+    // [S6] and [S6, S9] both become pills
+    let body = mdToHtml(sec.body_md).replace(/\[\s*([SM]\d+(?:\s*[,;]\s*[SM]\d+)*)\s*\]/g, (m, ids) => ids.split(/\s*[,;]\s*/).map(pill).join(""));
     html += `<section data-sec="${sec.id}"><div class="kind">${esc(sec.kind)}</div><h2 class="sec">${esc(sec.title)}<span class="min">${sec.minutes} min</span></h2>${body}</section>`;
     for (const v of vidsAfter[sec.id] || []) html += videoCard(v);
   }
@@ -261,6 +256,10 @@ function preview(el, doc) {
   html += `<div class="kind">sources</div><h2 class="sec">References</h2><ol style="padding-left:20px">${(r?.sources || []).filter((s) => cited.has(s.id)).map((s) =>
     `<li value="${s.id.slice(1)}"><a href="${esc(s.url)}" target="_blank">${esc(s.title)}</a> <span class="pill ${s.tier}">tier ${s.tier}</span> <span class="muted small">${esc(s.tier_reason)}</span></li>`).join("")}</ol>`;
   el.innerHTML = `<div class="card"><div class="prose ${S.heat ? "heat" : ""}">${html}</div></div>`;
+  for (const c of claims) {
+    const secEl = el.querySelector(`section[data-sec="${c.section_id}"]`);
+    if (secEl) highlight(secEl, c.sentence, c.verdict, c.idx);
+  }
 
   // execution badges under each python / js block, in order per section
   if (qc) {
@@ -280,6 +279,30 @@ function preview(el, doc) {
   }
   $$("mark.claim", el).forEach((m) => (m.onclick = (e) => claimPop(e, claims[m.dataset.c], srcs)));
   $$("a.cite[data-s]", el).forEach((a) => (a.onclick = (e) => sourcePop(e, srcs[a.dataset.s])));
+}
+/* find a claim's sentence in the rendered section and tint it. matching is on letters and digits
+   only, so markdown, citation pills and punctuation differences do not matter; the match can
+   span bold / code / link elements, each piece gets its own <mark>. */
+function highlight(container, sentence, verdict, idx) {
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => n.parentElement.closest("pre, a.cite, mark, h2, .kind") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  const nodes = []; let text = "";
+  while (walker.nextNode()) { nodes.push([walker.currentNode, text.length]); text += walker.currentNode.nodeValue; }
+  const keep = [], pos = [];
+  for (let i = 0; i < text.length; i++) { const ch = text[i].toLowerCase(); if (/[a-z0-9]/.test(ch)) { keep.push(ch); pos.push(i); } }
+  const needle = sentence.replace(/\[[^\]]*\]/g, "").replace(/^\s*([-*+]|\d+\.)\s+/, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (needle.length < 12) return false;
+  const at = keep.join("").indexOf(needle);
+  if (at < 0) return false;
+  const start = pos[at], end = pos[at + needle.length - 1] + 1;
+  for (const [n, off] of nodes) {
+    const s = Math.max(start, off), e = Math.min(end, off + n.nodeValue.length);
+    if (s >= e) continue;
+    const r = document.createRange(); r.setStart(n, s - off); r.setEnd(n, e - off);
+    const m = document.createElement("mark"); m.className = `claim ${verdict}`; m.dataset.c = idx;
+    r.surroundContents(m);
+  }
+  return true;
 }
 function timeline(sheet) {
   const total = Math.max(45, sheet.at(-1)?.end || 45);
