@@ -556,7 +556,7 @@ function paneQC2(el) {
       <div class="class"><div class="hd">question</div>${cls.cohort.map((c) => `<div class="hd">${esc(c.name)}<br><span style="text-transform:none;letter-spacing:0">${esc(c.level)}</span></div>`).join("")}<div class="hd">gain</div><div class="hd">discrim.</div>
       ${cls.items.map((it) => `<div>${esc(it.question)}${it.dead_distractors.length ? `<div class="small muted">unpicked options: ${it.dead_distractors.map((x) => String.fromCharCode(65 + x)).join(", ")}</div>` : ""}</div>
         ${names.map((n) => { const pre = it.pre_answers[n], post = it.post_answers[n];
-          const dot = (a, cls2) => `<i class="d ${a === undefined ? "x" : a === it.answer_index ? "y" : "n"} ${cls2}" title="${a === undefined ? "no answer" : "chose " + String.fromCharCode(65 + a)}"></i>`;
+          const dot = (a, cls2) => `<i class="sd ${a === undefined ? "x" : a === it.answer_index ? "y" : "n"} ${cls2}" title="${a === undefined ? "no answer" : "chose " + String.fromCharCode(65 + a)}"></i>`;
           return `<div class="dots">${dot(pre, "pre")}<span class="arrow">→</span>${dot(post, "")}</div>`; }).join("")}
         <div class="mono">${it.gain == null ? "–" : (it.gain > 0 ? "+" : "") + Math.round(it.gain * 100)}</div><div class="mono">${it.discrimination ?? "–"}</div>`).join("")}</div></div>
     ${cls.confusions.length ? `<div class="card"><h2>Where simulated students got stuck</h2>${cls.confusions.map((c) => `<div style="padding:8px 0;border-bottom:1px solid var(--line)">
