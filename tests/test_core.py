@@ -182,3 +182,18 @@ def test_quote_check_ignores_table_pipes_but_not_words():
     src = "| 1xx Informational | Indicates that the request was received and is being processed |"
     assert contains(src, "1xx Informational Indicates that the request was received")
     assert not contains(src, "1xx Informational indicates the request failed")
+
+
+def test_rate_limiter_queues_past_the_budget(monkeypatch):
+    from redpen import llm
+
+    slept = []
+    monkeypatch.setattr(llm.time, "sleep", lambda s: (slept.append(s), clock.__setitem__(0, clock[0] + s)))
+    clock = [1000.0]
+    monkeypatch.setattr(llm.time, "monotonic", lambda: clock[0])
+    lim = llm._RateLimiter(rpm=3)
+    for _ in range(3):
+        lim.wait("m")
+    assert not slept
+    lim.wait("m")  # fourth call inside the same minute has to wait
+    assert slept and 59 < slept[0] <= 60.1

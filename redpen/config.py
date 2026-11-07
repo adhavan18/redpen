@@ -11,12 +11,14 @@ MODEL = os.getenv("REDPEN_MODEL", "gemini-3.5-flash").strip()
 # tried in order when the main model 404s or its quota runs out
 FALLBACK_MODELS = [
     m.strip()
-    for m in os.getenv("REDPEN_FALLBACK_MODELS", "gemini-3.6-flash,gemini-3.5-flash-lite").split(",")
+    for m in os.getenv("REDPEN_FALLBACK_MODELS", "gemini-3.6-flash,gemini-3.7-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite").split(",")
     if m.strip()
 ]
 # cheap, fast model for high-volume calls (simulated students, claim extraction, probe planning)
 FAST_MODEL = os.getenv("REDPEN_FAST_MODEL", "gemini-3.5-flash-lite").strip()
-EMBED_MODEL =os.getenv("REDPEN_EMBED_MODEL", "gemini-embedding-001").strip()
+# client-side requests-per-minute cap per model (the free tier allows ~15)
+RPM_PER_MODEL = int(os.getenv("REDPEN_RPM", "12"))
+EMBED_MODEL = os.getenv("REDPEN_EMBED_MODEL", "gemini-embedding-001").strip()
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "").strip()
 
 DATA_DIR = Path(os.getenv("REDPEN_DATA_DIR", ROOT / "data"))

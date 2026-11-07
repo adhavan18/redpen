@@ -36,7 +36,8 @@ def client() -> genai.Client:
         raise LLMError("GEMINI_API_KEY is not set. put it in .env and restart the server.")
     with _client_lock:
         if _client is None:
-            _client = genai.Client(api_key=config.GEMINI_API_KEY)
+            # hard timeout: an overloaded model sometimes accepts a request and never answers
+            _client = genai.Client(api_key=config.GEMINI_API_KEY, http_options=types.HttpOptions(timeout=150_000))
         return _client
 
 
@@ -51,25 +52,54 @@ def _retry_delay(err: Exception) -> float | None:
     return float(m.group(1)) if m else None
 
 
-def _call(fn, what: str, fast: bool = False):
+class _RateLimiter:
+    """keeps each model under its requests-per-minute budget across all threads. the free tier
+    allows ~15 rpm per model and qc runs many calls in parallel; queueing here is cheaper than
+    collecting 429s and backing off."""
+
+    def __init__(self, rpm: int):
+        self.rpm, self.calls, self.lock = rpm, {}, threading.Lock()
+
+    def wait(self, key: str) -> None:
+        while True:
+            with self.lock:
+                now = time.monotonic()
+                q = [t for t in self.calls.get(key, []) if now - t < 60]
+                if len(q) < self.rpm:
+                    q.append(now)
+                    self.calls[key] = q
+                    return
+                delay = 60 - (now - q[0]) + 0.05
+                self.calls[key] = q
+            time.sleep(delay)
+
+
+_limiter = _RateLimiter(config.RPM_PER_MODEL)
+
+
+def _call(fn, what: str, fast: bool = False, limit_key: str | None = None):
     last: Exception | None = None
     for model in _models(fast):
-        for attempt in range(3):
+        for attempt in range(5):
             try:
+                _limiter.wait(limit_key or model)
                 return fn(model)
             except errors.ClientError as e:
                 last = e
                 if e.code == 404:
                     break  # model not available on this key, try the next one
                 if e.code == 429:
-                    if attempt >= 1 or "PerDay" in str(e):
-                        break  # quota for this model is gone (a daily limit never recovers by waiting)
-                    time.sleep(min(_retry_delay(e) or 8, 40))
+                    if "PerDay" in str(e) or attempt >= 4:
+                        break  # a daily limit never recovers by waiting: next model
+                    # per-minute limit: it resets within a minute, so wait and retry the same model
+                    time.sleep(max(_retry_delay(e) or 0, 6 * (attempt + 1)))
                     continue
                 raise LLMError(f"{what}: {e.message or e}") from e
             except errors.ServerError as e:
                 last = e
-                time.sleep(3 * (attempt + 1))
+                if attempt >= 1:
+                    break  # overloaded (503/504) twice: the next model is a better bet than waiting
+                time.sleep(3)
             except (ValidationError, json.JSONDecodeError, LLMError) as e:
                 last = e  # malformed output: just ask again
     raise LLMError(f"{what} failed after retries: {last}")
@@ -156,7 +186,7 @@ def embed(texts: list[str], task: str = "RETRIEVAL_DOCUMENT") -> np.ndarray:
             )
             return [e.values for e in r.embeddings]
 
-        vecs.extend(_call(fn, "embedding"))
+        vecs.extend(_call(fn, "embedding", limit_key=config.EMBED_MODEL))
     arr = np.array(vecs, dtype=np.float32)
     norms = np.linalg.norm(arr, axis=1, keepdims=True)
     norms[norms == 0] = 1
