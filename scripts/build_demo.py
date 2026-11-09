@@ -6,6 +6,7 @@ produced; the export button serves the committed sample package for that lesson.
 
 usage: python scripts/build_demo.py   (needs the lessons in data/lessons)
 """
+import hashlib
 import json
 import re
 import shutil
@@ -50,9 +51,11 @@ def main():
     shutil.copy(ROOT / "static" / "style.css", DOCS / "style.css")
     shutil.copy(ROOT / "static" / "app.js", DOCS / "app.js")
     html = (ROOT / "static" / "index.html").read_text(encoding="utf-8")
-    html = html.replace('href="/static/style.css"', 'href="style.css"')
+    # content hashes in the urls so the 10-minute pages cache never serves a stale ui
+    v = {f: hashlib.sha1((DOCS / f).read_bytes()).hexdigest()[:8] for f in ("style.css", "app.js")}
+    html = html.replace('href="/static/style.css"', f'href="style.css?v={v["style.css"]}"')
     html = html.replace('<script src="/static/app.js"></script>',
-                        '<script>window.REDPEN_DEMO = true;</script>\n<script src="app.js"></script>')
+                        f'<script>window.REDPEN_DEMO = true;</script>\n<script src="app.js?v={v["app.js"]}"></script>')
     html = re.sub(r"<title>.*?</title>", "<title>redpen · demo</title>", html)
     (DOCS / "index.html").write_text(html, encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
