@@ -21,7 +21,23 @@ const SAMPLES = [
 ];
 
 // ---------- api ----------
+// on github pages there is no server: DEMO reads snapshots of real runs from demo/*.json
+// (built by scripts/build_demo.py) and refuses anything that would write.
+const DEMO = window.REDPEN_DEMO === true;
+const DEMO_MSG = "This is the read-only demo. Clone the repo and run it locally to create or change lessons.";
+async function demoApi(path, opts) {
+  if ((opts.method || "GET") !== "GET") throw new Error(DEMO_MSG);
+  const [p, q] = path.split("?");
+  const file = p === "/api/health" ? "health" : p === "/api/lessons" ? "lessons" : p.replace(/^\/api\/lessons\//, "");
+  const r = await fetch(`demo/${file}.json`);
+  if (!r.ok) throw new Error("Not in the demo");
+  const d = await r.json();
+  const since = parseFloat(new URLSearchParams(q || "").get("since") || "0");
+  if (d.state) d.state.log = d.state.log.filter((x) => x.t > since);
+  return d;
+}
 async function api(path, opts = {}) {
+  if (DEMO) return demoApi(path, opts);
   const r = await fetch(path, { headers: { "Content-Type": "application/json" }, ...opts,
                                 body: opts.body ? JSON.stringify(opts.body) : undefined });
   if (!r.ok) {
@@ -56,7 +72,9 @@ function go(tab) { location.hash = `#/l/${S.id}/${tab}`; }
 async function health() {
   try {
     S.health = await api("/api/health");
-    $("#health").innerHTML = S.health.llm_key
+    $("#health").innerHTML = DEMO
+      ? `<span class="led"></span>read-only demo · <a href="https://github.com/adhavan18/redpen">run it yourself</a>`
+      : S.health.llm_key
       ? `<span class="led"></span>${esc(S.health.model)} · ${esc(S.health.search)}`
       : `<span class="led off"></span>no GEMINI_API_KEY in .env`;
   } catch { $("#health").innerHTML = `<span class="led off"></span>server offline`; }
@@ -72,6 +90,7 @@ async function home() {
       <h1>Lessons that show<br>their <em>receipts</em>.</h1>
       <p>Researches the topic, writes a 45-minute lesson, then proves it: every claim matched to a source quote, every code example run, every quiz taken by a simulated classroom.</p>
     </section>
+    ${DEMO ? `<div class="demo-note"><b>You're looking at two real runs, frozen.</b> Open a lesson below to see the research, both QC reports and the export package exactly as the tool produced them. Creating new lessons needs the Python server and a free Gemini key: <a href="https://github.com/adhavan18/redpen#run-it">run it locally</a>.</div>` : ""}
     <form class="composer" id="new" autocomplete="off">
       <label for="f-title">Lesson title</label>
       <input id="f-title" name="title" placeholder="HTTP Requests and Responses" maxlength="160">
@@ -587,11 +606,11 @@ function paneExport(el) {
   $("#dl").onclick = async () => {
     const o = $("#ovr")?.value?.trim() || "";
     try {
-      const r = await fetch(`/api/lessons/${S.id}/export${o ? "?override=" + encodeURIComponent(o) : ""}`);
+      const r = await fetch(DEMO ? `demo/${S.id}.zip` : `/api/lessons/${S.id}/export${o ? "?override=" + encodeURIComponent(o) : ""}`);
       if (!r.ok) { const j = await r.json(); throw new Error(j.detail); }
-      const blob = await r.blob(), name = (r.headers.get("content-disposition") || "").match(/filename="(.+)"/)?.[1] || "lesson.zip";
+      const blob = await r.blob(), name = (r.headers.get("content-disposition") || "").match(/filename="(.+)"/)?.[1] || `${S.id}.zip`;
       const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click(); URL.revokeObjectURL(a.href);
-      toast(`Exported ${name}`); await refresh(true);
+      toast(`Exported ${name}`); if (!DEMO) await refresh(true);
     } catch (e) { toast(e.message, true); }
   };
 }
