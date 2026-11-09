@@ -158,7 +158,7 @@ function render() {
       <div class="clock">${mins != null ? `<div class="num">${mins}<small> / 45 min</small></div>${ring(mins)}` : ""}</div>
     </div>
     <div class="steps">${STEPS.map(([k, n, t, sub]) => stepCard(k, n, t, sub)).join("")}${exportCard()}</div>
-    ${!S.health?.llm_key ? `<div class="banner"><b>No Gemini key.</b> Add GEMINI_API_KEY to the .env file in the project folder, restart the server, then press run.</div>` : ""}
+    ${!DEMO && !S.health?.llm_key ? `<div class="banner"><b>No Gemini key.</b> Add GEMINI_API_KEY to the .env file in the project folder, restart the server, then press run.</div>` : ""}
     <div class="seg" role="tablist">${TABS.map(([k, label]) => {
       const n = k === "qc_factual" ? counts(d.qc_factual) : k === "qc_instructional" ? counts(d.qc_instructional) : 0;
       return `<button class="${S.tab === k ? "on" : ""}" data-tab="${k}">${label}${n ? `<span class="n">${n}</span>` : ""}</button>`;
@@ -192,7 +192,7 @@ function stepCard(k, n, title, sub) {
     if (st === "failed") btn = `<button class="btn sm primary" data-run="${k}">Retry</button>`;
     else if (st === "idle" || st === "blocked") btn = `<button class="btn sm dark" data-run="${runSet}">Run</button>`;
     else if (st === "stale") btn = `<button class="btn sm dark" data-run="${k}">Re-run</button>`;
-    else if (st === "done") btn = `<button class="btn sm ghost" data-run="${k}" title="run again">↻</button>`;
+    else if (st === "done" && !DEMO) btn = `<button class="btn sm ghost" data-run="${k}" title="run again">↻</button>`;
   }
   return `<div class="step ${st}"><div class="k">${n}</div><div class="t">${title}</div>
     <div class="s">${st === "running" ? '<span class="spin"></span>' : ""}${esc(label)}</div>
