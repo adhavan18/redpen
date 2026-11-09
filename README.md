@@ -6,6 +6,8 @@ give it a lesson title and a learning objective. it researches the topic (web, s
 
 built for the kalvium ai research intern task.
 
+**live demo: [adhavan18.github.io/redpen](https://adhavan18.github.io/redpen/)**. it's the real ui showing the two test runs (http and sql joins), read-only. you can open the lesson, research, both qc reports, the version history and the export zip. making new lessons needs the server and a gemini key, so run it locally for that.
+
 ## what makes it different
 
 most lesson generators ask a second llm "is this accurate? 1-10". redpen tries to check things the way a careful reviewer would:
@@ -84,6 +86,7 @@ redpen/
   export.py     zip: lesson md/html/json, references, both qc reports, manifest
 prompts/        every prompt as a markdown file, versioned with the code
 static/         the ui
+docs/           github pages demo, built by scripts/build_demo.py from the two test runs
 tests/
 samples/        exported packages from the two test lessons
 video/          the remotion project used to edit the demo video (screen recordings and footage not included)

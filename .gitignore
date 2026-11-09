@@ -24,3 +24,4 @@ video/live-lesson.txt
 video/public/music.wav
 video/node_modules/
 *.mp4
+/redpen.zip
